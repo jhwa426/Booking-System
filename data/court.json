@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Auckland Indoor Futsal 1",
+        "imgURLs": [
+            "./booking.football/public/img/jeff.png'",
+            "./booking.football/public/img/letter-j-logo.png'",
+            "./booking.football/public/img/uoa.png'"
+        ],
+        "price": 120,
+        "type": "Indoor",
+        "maxPlayers": 12,
+        "currentBookings": [],
+        "location": "Auckland CBD",
+        "description": "description area...."
+    },
+    {
+        "name": "Auckland Indoor Futsal 2",
+        "imgURLs": [
+            "./booking.football/public/img/jeff.png'",
+            "./booking.football/public/img/letter-j-logo.png'",
+            "./booking.football/public/img/uoa.png'"
+        ],
+        "price": 120,
+        "type": "Indoor",
+        "maxPlayers": 12,
+        "currentBookings": [],
+        "location": "Auckland CBD",
+        "description": "description area...."
+    },
+    {
+        "name": "Auckland Outdoor Futsal 1",
+        "imgURLs": [
+            "./booking.football/public/img/jeff.png'",
+            "./booking.football/public/img/letter-j-logo.png'",
+            "./booking.football/public/img/uoa.png'"
+        ],
+        "price": 100,
+        "type": "Outdoor",
+        "maxPlayers": 10,
+        "currentBookings": [],
+        "location": "Parnell, Auckland",
+        "description": "description area...."
+    },
+    {
+        "name": "Auckland Outdoor Futsal 2",
+        "imgURLs": [
+            "./booking.football/public/img/jeff.png'",
+            "./booking.football/public/img/letter-j-logo.png'",
+            "./booking.football/public/img/uoa.png'"
+        ],
+        "price": 100,
+        "type": "Outdoor",
+        "maxPlayers": 10,
+        "currentBookings": [],
+        "location": "Parnell, Auckland",
+        "description": "description area...."
+    }
+]
