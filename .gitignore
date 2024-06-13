@@ -24,6 +24,4 @@ yarn-error.log*
 <<<<<<< HEAD
 =======
 
-# authentication 
-.env
->>>>>>> backend
+
