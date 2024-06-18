@@ -2,9 +2,9 @@
     {
         "name": "Auckland Indoor Futsal 1",
         "imgURLs": [
-            "./booking.football/public/img/jeff.png'",
-            "./booking.football/public/img/letter-j-logo.png'",
-            "./booking.football/public/img/uoa.png'"
+            "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlkl9nNaztVA8yGAbHsZJp_h1Yw8OysKGpA&usqp=CAU",
+            "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg"
         ],
         "price": 120,
         "type": "Indoor",
@@ -16,9 +16,9 @@
     {
         "name": "Auckland Indoor Futsal 2",
         "imgURLs": [
-            "./booking.football/public/img/jeff.png'",
-            "./booking.football/public/img/letter-j-logo.png'",
-            "./booking.football/public/img/uoa.png'"
+            "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlkl9nNaztVA8yGAbHsZJp_h1Yw8OysKGpA&usqp=CAU",
+            "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg"
         ],
         "price": 120,
         "type": "Indoor",
@@ -30,9 +30,9 @@
     {
         "name": "Auckland Outdoor Futsal 1",
         "imgURLs": [
-            "./booking.football/public/img/jeff.png'",
-            "./booking.football/public/img/letter-j-logo.png'",
-            "./booking.football/public/img/uoa.png'"
+            "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlkl9nNaztVA8yGAbHsZJp_h1Yw8OysKGpA&usqp=CAU",
+            "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg"
         ],
         "price": 100,
         "type": "Outdoor",
@@ -44,9 +44,9 @@
     {
         "name": "Auckland Outdoor Futsal 2",
         "imgURLs": [
-            "./booking.football/public/img/jeff.png'",
-            "./booking.football/public/img/letter-j-logo.png'",
-            "./booking.football/public/img/uoa.png'"
+            "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlkl9nNaztVA8yGAbHsZJp_h1Yw8OysKGpA&usqp=CAU",
+            "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg"
         ],
         "price": 100,
         "type": "Outdoor",

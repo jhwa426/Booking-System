@@ -1,4 +1,26 @@
-.smallimg {
+.small-img {
     height: 200px;
     width: 100%;
+    border-radius: 5px;
+}
+
+.h1 {
+    font-size: 20px;
+}
+
+.view-details {
+    float: right;
+}
+
+.btn {
+    background-color: black;
+    color: white;
+    box-shadow: none;
+}
+
+.bs {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 20px;
 }
