@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { Modal, Button, Carousel } from 'react-bootstrap';
 import "./Court.css";
+import { Link } from "react-router-dom";
 
 const Courts = ({ court }) => {
     const [show, setShow] = useState(false);
@@ -22,25 +22,40 @@ const Courts = ({ court }) => {
 
             <div className="col-md-7">
                 <h1>{court.name}</h1>
-                <p>Price :  {court.price}</p>
-                <p>Max Players :  {court.maxPlayers}</p>
-                <p>Location :  {court.location}</p>
+                <p>Price : ${court.price}</p>
+                <p>Max Players : {court.maxPlayers} people</p>
+                <p>Location : {court.location}</p>
 
                 <div className="view-details">
-                    <button className="btn btn-primary">View Details</button>
+                    <Link to={`/book/${court._id}`}>
+                        <button className="btn btn-primary m-2">Book Now</button>
+                    </Link>
+                    <button className="btn btn-primary" onClick={handleShow}>View Details</button>
                 </div>
             </div>
 
-
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
-
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+            <Modal show={show} onHide={handleClose} size="lg">
+                <Modal.Header>
+                    <Modal.Title>{court.name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+
+                <Modal.Body>
+                    <Carousel prevLabel="null" nextLabel="null">
+                        {court.imgURLs.map((img) => {
+                            return (
+                                <Carousel.Item>
+                                    <img className="d-block w-100 detail-img" src={img} />
+                                    <Carousel.Caption>
+                                        <h3>Detail title</h3>
+                                        <p>Detail description</p>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                            )
+                        })}
+                    </Carousel>
+                    <p>{court.description}</p>
+                </Modal.Body>
+
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
@@ -49,6 +64,7 @@ const Courts = ({ court }) => {
                         Save Changes
                     </Button>
                 </Modal.Footer>
+
             </Modal>
 
         </div>
@@ -56,3 +72,7 @@ const Courts = ({ court }) => {
 }
 
 export default Courts;
+
+
+
+
