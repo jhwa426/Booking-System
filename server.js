@@ -8,6 +8,8 @@ const dbConfig = require("./db");
 
 const courtsRoute = require("./routes/courtsRoute");
 
+app.use(express.json());
+
 app.use("/api/courts", courtsRoute);
 
 app.listen(port, () => {

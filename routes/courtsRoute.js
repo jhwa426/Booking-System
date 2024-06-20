@@ -14,4 +14,19 @@ router.get("/getAllCourts", async (req, res) => {
     }
 });
 
+router.post("/getCourtById", async (req, res) => {
+
+    const courtId = req.body.courtId;
+
+    try {
+        const court = await Court.findOne({ _id: courtId })
+        res.send(court);
+        // return res.json({ court });
+
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+});
+
+
 module.exports = router;
