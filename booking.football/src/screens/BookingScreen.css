@@ -2,6 +2,7 @@
     height: 200px;
     width: 100%;
     border-radius: 5px;
+
 }
 
 h1 {
@@ -25,6 +26,19 @@ h1 {
     padding: 20px;
 }
 
-.detail-img {
-    height: 400px;
+.btn-area {
+    float: right;
+}
+
+.payment-section {
+    text-align: right;
+}
+
+.payment-row {
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.loading-text {
+    text-align: center;
 }
