@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./Register.css";
+import axios from "axios";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -15,7 +16,11 @@ const Register = () => {
                 password,
                 confirmPassword,
             }
-            console.log(user);
+            try {
+                const register = axios.post("/api/users/register", user).data;
+            } catch (error) {
+                console.log(error);
+            }
         } else {
             alert("Passwords are not matched! Please review your password");
         }

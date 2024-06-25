@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import "./Login.css";
+import axios from "axios";
 
 const Login = () => {
-    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     function login() {
         const user = {
-            name,
+            email,
             password,
         }
-        console.log(user);
+        try {
+            const registeredAccount = axios.post("/api/users/login", user).data;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -21,8 +26,8 @@ const Login = () => {
                     <input
                         type="text"
                         className="form-control login-form"
-                        placeholder="Email" value={name}
-                        onChange={(event) => { setName(event.target.value) }}
+                        placeholder="Email" value={email}
+                        onChange={(event) => { setEmail(event.target.value) }}
                         required
                     />
                     <input
