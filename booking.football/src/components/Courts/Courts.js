@@ -57,12 +57,17 @@ const Courts = ({ court }) => {
                 </Modal.Body>
 
                 <Modal.Footer>
+                    <Link to={`/book/${court._id}`}>
+                        <Button className="btn btn-primary m-2">Book Now</Button>
+                    </Link>
+
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+
+                    {/* <Button variant="primary" onClick={handleClose}>
                         Save Changes
-                    </Button>
+                    </Button> */}
                 </Modal.Footer>
 
             </Modal>

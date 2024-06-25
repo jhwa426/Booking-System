@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Courts from "../components/Courts/Courts";
 import "./Home.css";
+import Loader from "../components/Loader/Loader";
+import Error from "../components/Error/Error";
 // import axios from "axios";
 
 const Home = () => {
@@ -34,15 +36,15 @@ const Home = () => {
         <div className="container">
             <div className="row main-row mt-5">
                 {IsLoading ? (
-                    <h1 className="loading-text">Data Loading...</h1>
-                ) : error ? (
-                    <h1 className="loading-text">Error</h1>
-                ) : (
+                    <h1 className="loading-text">Data Loading...<Loader /></h1>
+                ) : courts.length > 1 ? (
                     courts.map((court) => {
-                        return <div className="col-md-9 mt-2">
+                        return <div className="col-md-9 mt-3">
                             <Courts court={court} />
                         </div>
                     })
+                ) : (
+                    <Error />
                 )}
             </div>
         </div>

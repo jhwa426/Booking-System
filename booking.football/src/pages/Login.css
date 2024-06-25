@@ -1,0 +1,17 @@
+.login-content {
+    justify-content: center;
+    margin-top: 48px
+}
+
+.login-form {
+    box-shadow: none;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+.login-title {
+    font-size: 30px;
+    padding: 10;
+    font-weight: bold;
+    text-align: center;
+}

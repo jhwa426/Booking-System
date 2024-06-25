@@ -2,8 +2,10 @@ import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Home from "./screens/Home";
-import BookingScreen from "./screens/BookingScreen";
+import Home from "./pages/Home";
+import Booking from "./pages/Booking";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
     return (
@@ -12,8 +14,10 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/book/:courtId" element={<BookingScreen />} />
+                    <Route path="/book/:courtId" element={<Booking />} />
                     <Route path="*" element={<Home />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </BrowserRouter>
         </div>

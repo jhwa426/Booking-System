@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "./BookingScreen.css";
+import "./Booking.css";
 import Loader from "../components/Loader/Loader";
+import Error from "../components/Error/Error";
 
 const BookingScreen = () => {
     const { courtId } = useParams();
@@ -40,7 +41,7 @@ const BookingScreen = () => {
             {/* <h1>Booking Screen</h1> */}
             {/* {courtId ? <h1>ID: {courtId}</h1> : <div>No courtId provided</div>} */}
 
-            {IsLoading ? (<h1 className="loading-text"><Loader /></h1>) : error ? (<h1>Error occurred!</h1>) : (
+            {IsLoading ? (<h1 className="loading-text"><Loader /></h1>) : court ? (
                 <div className="row payment-row">
                     <div className="col-md-5">
                         <h1>{court.name}</h1>
@@ -76,7 +77,7 @@ const BookingScreen = () => {
                         </div>
                     </div>
                 </div>
-            )}
+            ) : (<Error />)}
         </div>
     );
 }
