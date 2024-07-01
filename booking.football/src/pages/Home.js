@@ -7,7 +7,7 @@ import Error from "../components/Error/Error";
 
 const Home = () => {
     const [courts, setCourts] = useState([]);
-    const [IsLoading, setIsLoading] = useState();
+    const [IsLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
 
     useEffect(() => {

@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Success = () => {
+const Success = ({ message }) => {
     return (
         <div>
             <div class="alert alert-success" role="alert">
-                This is a success alert—check it out!
+                {message}
             </div>
         </div>
     );
 }
 
-export default Success;
+export default Success; 

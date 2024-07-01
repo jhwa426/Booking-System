@@ -25,17 +25,17 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({
+        const existedUser = await User.findOne({
             email: email,
             password: password
         });
 
-        if (user) {
+        if (existedUser) {
             const userData = {
-                name: user.name,
-                email: user.email,
-                isAdmin: user.isAdmin,
-                _id: user._id,
+                name: existedUser.name,
+                email: existedUser.email,
+                isAdmin: existedUser.isAdmin,
+                _id: existedUser._id,
             }
             res.send(userData);
         } else {

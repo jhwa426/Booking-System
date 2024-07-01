@@ -17,3 +17,12 @@
 .nav-item:hover {
     background-color: aliceblue;
 }
+
+.user-name {
+    color: aliceblue;
+    margin-left: auto;
+}
+
+.navbar-toggle {
+    color: aliceblue;
+}
