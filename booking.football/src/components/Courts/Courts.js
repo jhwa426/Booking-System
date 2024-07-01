@@ -40,7 +40,7 @@ const Courts = ({ court }) => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Carousel prevLabel="null" nextLabel="null">
+                    <Carousel prevLabel="" nextLabel="">
                         {court.imgURLs.map((img) => {
                             return (
                                 <Carousel.Item>
