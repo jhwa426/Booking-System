@@ -3,7 +3,7 @@ import { Modal, Button, Carousel } from 'react-bootstrap';
 import "./Court.css";
 import { Link } from "react-router-dom";
 
-const Courts = ({ court }) => {
+const Courts = ({ court, startDate, endDate }) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -27,7 +27,7 @@ const Courts = ({ court }) => {
                 <p>Location : {court.location}</p>
 
                 <div className="view-details">
-                    <Link to={`/book/${court._id}`}>
+                    <Link to={`/book/${court._id}/${startDate}/${endDate}`}>
                         <button className="btn btn-primary m-2">Book Now</button>
                     </Link>
                     <button className="btn btn-primary" onClick={handleShow}>View Details</button>
@@ -57,9 +57,10 @@ const Courts = ({ court }) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Link to={`/book/${court._id}`}>
-                        <Button className="btn btn-primary m-2">Book Now</Button>
+                    <Link to={`/book/${court._id}/${startDate}/${endDate}`}>
+                        <button className="btn btn-primary m-2">Book Now</button>
                     </Link>
+
 
                     <Button variant="secondary" onClick={handleClose}>
                         Close

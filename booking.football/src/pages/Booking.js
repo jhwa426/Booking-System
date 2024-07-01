@@ -5,12 +5,21 @@ import "./Booking.css";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
 
-const BookingScreen = () => {
-    const { courtId } = useParams();
+import moment from 'moment';
+
+
+const Booking = () => {
+    const { courtId, startDate, endDate } = useParams();
 
     const [IsLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     const [court, setCourt] = useState();
+
+    // Convert startDate and endDate to moment objects
+    const start = moment(startDate, 'DD-MM-YYYY');
+    const end = moment(endDate, 'DD-MM-YYYY');
+
+    const totalDate = moment.duration(end.diff(start)).asDays();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -55,8 +64,8 @@ const BookingScreen = () => {
                             <h1>Booking Details</h1>
                             <hr />
                             <b>
-                                <p>From date : </p>
-                                <p>To date : </p>
+                                <p>From date : {startDate} </p>
+                                <p>To date : {endDate}</p>
                                 <p>Max Players : {court.maxPlayers} people</p>
                                 <p>Description : {court.description}</p>
                             </b>
@@ -66,7 +75,7 @@ const BookingScreen = () => {
                             <b>
                                 <h1>Amount</h1>
                                 <hr />
-                                <p>Total hours : </p>
+                                <p>Total hours : {totalDate}</p>
                                 <p>Per Hour : ${court.price}</p>
                                 <p>Total Amount : </p>
                             </b>
@@ -82,4 +91,4 @@ const BookingScreen = () => {
     );
 }
 
-export default BookingScreen;
+export default Booking;
