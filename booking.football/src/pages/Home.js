@@ -3,12 +3,16 @@ import Courts from "../components/Courts/Courts";
 import "./Home.css";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
-import { DatePicker, Space } from 'antd';
+import { DatePicker } from 'antd';
+
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+
 const { RangePicker } = DatePicker;
-
-const moment = require('moment');
-
-// import axios from "axios";
 
 const Home = () => {
     const [courts, setCourts] = useState([]);
@@ -32,7 +36,6 @@ const Home = () => {
 
             } catch (error) {
                 setError(true);
-                console.log(error);
                 setIsLoading(false);
             }
         }
@@ -40,41 +43,64 @@ const Home = () => {
         fetchData();
     }, []);
 
-    function filterByDate(date, dateString) {
-        // date is an array of Moment.js objects representing the start and end dates,
-        // dateString is an array of strings representing the formatted start and end dates.
+    // function filterByDate(date, dateString) {
+    //     // date is an array of Moment.js objects representing the start and end dates,
+    //     // dateString is an array of strings representing the formatted start and end dates.
 
-        // console.log(dateString[0]); // start date
-        // console.log(dateString[1]); // end date
+    //     setStartDate(dateString[0]);
+    //     setEndDate(dateString[1]);
+    // }
 
+    function SelectedTime(value, dateString) {
         setStartDate(dateString[0]);
         setEndDate(dateString[1]);
     }
 
-    // const onOk = (value) => {
-    //     console.log('onOk: ', value);
-    // };
+    const disabledDate = (current) => {
+        // Can not select days before yesterday and today
+        return current && current < dayjs().tz('Pacific/Auckland').subtract(1, 'day').endOf('day');
+    };
+
+    function disabledHours() {
+        let hours = [];
+        for (let i = 0; i < 10; i++) {
+            hours.push(i);
+        }
+        for (let i = 22; i < 24; i++) {
+            hours.push(i);
+        }
+        return hours;
+    }
+
+    function disabledMinutes() {
+        let minutes = [];
+        for (let i = 1; i < 60; i++) {
+            if (i % 30 !== 0) {
+                minutes.push(i);
+            }
+        }
+        return minutes;
+    }
+
 
     return (
         <div className="container">
 
             <div className="row main-row mt-5">
-                <div className="col-md-3">
-                    <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
+                <div className="col-md-5">
+                    {/* <RangePicker format="DD-MM-YYYY" onChange={filterByDate} /> */}
 
-                    {/* <Space direction="vertical" size={12}>
-                        <RangePicker
-                            showTime={{
-                                format: 'HH:mm',
-                            }}
-                            format="YYYY-MM-DD HH:mm"
-                            onChange={(value, dateString) => {
-                                console.log('Selected Time: ', value);
-                                console.log('Formatted Selected Time: ', dateString);
-                            }}
-                            onOk={onOk}
-                        />
-                    </Space> */}
+                    <RangePicker
+                        disabledDate={disabledDate}
+                        showTime={{
+                            format: 'HH:mm',
+                            hideDisabledOptions: true,
+                            disabledHours: disabledHours,
+                            disabledMinutes: disabledMinutes,
+                        }}
+                        format="DD-MM-YYYY HH:mm"
+                        onChange={SelectedTime}
+                    />
 
                 </div>
             </div>

@@ -14,12 +14,18 @@ const Booking = () => {
     const [IsLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     const [court, setCourt] = useState();
+    const [totalAmount, setTotalAmount] = useState(0);
 
     // Convert startDate and endDate to moment objects
-    const start = moment(startDate, 'DD-MM-YYYY');
-    const end = moment(endDate, 'DD-MM-YYYY');
+    const start = moment(startDate, 'DD-MM-YYYY HH:mm');
+    const end = moment(endDate, 'DD-MM-YYYY HH:mm');
 
-    const totalDate = moment.duration(end.diff(start)).asDays();
+    const startTime = moment(startDate, 'DD-MM-YYYY HH:mm').format('hh:mm A');
+    const endTime = moment(endDate, 'DD-MM-YYYY HH:mm').format('hh:mm A');
+
+    const totalHours = moment.duration(end.diff(start)).asHours();
+
+    const displayDate = moment(startDate, 'DD-MM-YYYY HH:mm').format('dddd, DD-MM-YYYY, hh:mm A');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,6 +40,10 @@ const Booking = () => {
 
                 setCourt(response.data);
                 setIsLoading(false);
+
+                // Calculate totalAmount here after court is set
+                const totalHours = moment.duration(end.diff(start)).asHours();
+                setTotalAmount(totalHours * response.data.price); // <-- Add this line
 
             } catch (error) {
                 setError(true);
@@ -64,8 +74,8 @@ const Booking = () => {
                             <h1>Booking Details</h1>
                             <hr />
                             <b>
-                                <p>From date : {startDate} </p>
-                                <p>To date : {endDate}</p>
+                                <p>Date : {displayDate}</p>
+                                <p>Play Time : {startTime} to {endTime}</p>
                                 <p>Max Players : {court.maxPlayers} people</p>
                                 <p>Description : {court.description}</p>
                             </b>
@@ -75,9 +85,9 @@ const Booking = () => {
                             <b>
                                 <h1>Amount</h1>
                                 <hr />
-                                <p>Total hours : {totalDate}</p>
+                                <p>Total hours : {totalHours}</p>
                                 <p>Per Hour : ${court.price}</p>
-                                <p>Total Amount : </p>
+                                <p>Total Amount : ${totalAmount}</p>
                             </b>
                         </div>
 
