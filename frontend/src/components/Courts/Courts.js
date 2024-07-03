@@ -13,6 +13,15 @@ const Courts = ({ court, startDate, endDate }) => {
         setShow(true)
     };
 
+    const isBookingAvailable = startDate && endDate;
+
+    const handleBookNowClick = (event) => {
+        if (!isBookingAvailable) {
+            event.preventDefault();
+            alert('Please select a date and time range first.');
+        }
+    };
+
     return (
         <div className="row bs">
 
@@ -27,7 +36,10 @@ const Courts = ({ court, startDate, endDate }) => {
                 <p>Location : {court.location}</p>
 
                 <div className="view-details">
-                    <Link to={`/book/${court._id}/${startDate}/${endDate}`}>
+                    {/* <Link to={`/book/${court._id}/${startDate}/${endDate}`}>
+                        <button className="btn btn-primary m-2" disabled={!isBookingAvailable} >Book Now</button>
+                    </Link> */}
+                    <Link to={isBookingAvailable ? `/book/${court._id}/${startDate}/${endDate}` : '#'} onClick={handleBookNowClick}>
                         <button className="btn btn-primary m-2">Book Now</button>
                     </Link>
                     <button className="btn btn-primary" onClick={handleShow}>View Details</button>
@@ -58,7 +70,7 @@ const Courts = ({ court, startDate, endDate }) => {
 
                 <Modal.Footer>
                     <Link to={`/book/${court._id}/${startDate}/${endDate}`}>
-                        <button className="btn btn-primary m-2">Book Now</button>
+                        <button className="btn btn-primary m-2" disabled={!isBookingAvailable}>Book Now</button>
                     </Link>
 
 
