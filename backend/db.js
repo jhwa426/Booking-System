@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const password = process.env.Client_secret;
-console.log(process.env.Client_secret);
+
 var mongoURL = `mongodb+srv://wodud6359:${password}@cluster0.upzbgb5.mongodb.net/booking-football`;
 
 mongoose.connect(mongoURL, { useUnifiedTopology: true, useNewUrlParser: true });

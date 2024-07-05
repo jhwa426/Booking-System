@@ -9,8 +9,10 @@ import moment from 'moment';
 
 
 const Booking = () => {
+    // useParams
     const { courtId, startDate, endDate } = useParams();
 
+    // useState
     const [IsLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     const [court, setCourt] = useState();
@@ -43,7 +45,7 @@ const Booking = () => {
 
                 // Calculate totalAmount here after court is set
                 const totalHours = moment.duration(end.diff(start)).asHours();
-                setTotalAmount(totalHours * response.data.price); // <-- Add this line
+                setTotalAmount(totalHours * response.data.price);
 
             } catch (error) {
                 setError(true);
@@ -53,6 +55,24 @@ const Booking = () => {
 
         fetchData();
     }, [courtId]);
+
+    async function payNow() {
+        const bookingDetails = {
+            court,
+            userId: JSON.parse(localStorage.getItem("currentUser"))._id,
+            startDate,
+            endDate,
+            totalHours,
+            totalAmount,
+        }
+        try {
+            const response = await axios.post("/api/bookings/bookingCourt", bookingDetails);
+        } catch (error) {
+            console.error('Error booking court:', error.response.data);
+        }
+
+    }
+
 
     return (
         <div className="m-5">
@@ -74,6 +94,7 @@ const Booking = () => {
                             <h1>Booking Details</h1>
                             <hr />
                             <b>
+                                <p>Name : {JSON.parse(localStorage.getItem("currentUser")) ? JSON.parse(localStorage.getItem("currentUser")).name : "Guest"}</p>
                                 <p>Date : {displayDate}</p>
                                 <p>Play Time : {startTime} to {endTime}</p>
                                 <p>Max Players : {court.maxPlayers} people</p>
@@ -92,7 +113,7 @@ const Booking = () => {
                         </div>
 
                         <div className="btn-area">
-                            <button className="btn btn-primary">Pay Now</button>
+                            <button className="btn btn-primary" onClick={payNow}>Pay Now</button>
                         </div>
                     </div>
                 </div>
