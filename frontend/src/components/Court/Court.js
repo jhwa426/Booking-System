@@ -39,6 +39,7 @@ const Courts = ({ court, startDate, endDate }) => {
                     {/* <Link to={`/book/${court._id}/${startDate}/${endDate}`}>
                         <button className="btn btn-primary m-2" disabled={!isBookingAvailable} >Book Now</button>
                     </Link> */}
+
                     <Link to={isBookingAvailable ? `/book/${court._id}/${startDate}/${endDate}` : '#'} onClick={handleBookNowClick}>
                         <button className="btn btn-primary m-2">Book Now</button>
                     </Link>

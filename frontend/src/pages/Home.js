@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Courts from "../components/Courts/Courts";
 import "./Home.css";
+import Court from "../components/Court/Court";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
 import { DatePicker } from 'antd';
@@ -8,6 +8,8 @@ import { DatePicker } from 'antd';
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
+import moment from "moment";
+
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -22,6 +24,8 @@ const Home = () => {
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
 
+    const [bookedCourt, setBookedCourt] = useState([]);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,6 +36,7 @@ const Home = () => {
                 const data = await response.json();
 
                 setCourts(data);
+                setBookedCourt(data);
                 setIsLoading(false);
 
             } catch (error) {
@@ -51,10 +56,63 @@ const Home = () => {
     //     setEndDate(dateString[1]);
     // }
 
+    // Default
     function SelectedTime(value, dateString) {
         setStartDate(dateString[0]);
         setEndDate(dateString[1]);
+
+        console.log(dateString[0]); // 05-07-2024 10:00
+        console.log(dateString[1]);
     }
+
+
+
+    // TEST
+    // function SelectedTime(value, dateString) {
+    //     setStartDate(dateString[0]);
+    //     setEndDate(dateString[1]);
+
+    //     console.log(setStartDate(dateString[0]));
+    //     console.log(setStartDate(dateString[1]));
+
+    //     let confirmBooking = []
+    //     let availability = false;
+
+    //     for (const court of courts) { // Changed from confirmBooking to courts
+    //         if (court.currentBooking && court.currentBooking.length > 0) { // Added check for court.currentBooking
+    //             for (const booking of court.currentBooking) {
+    //                 if (
+    //                     !moment(
+    //                         moment(moment(dateString[0]).format("DD-MM-YYYY")).isBetween(
+    //                             booking.startDate,
+    //                             booking.endDate
+    //                         )
+    //                     ) &&
+    //                     !moment(
+    //                         moment(dateString[1]).format("DD-MM-YYYY")).isBetween(
+    //                             booking.startDate, booking.endDate
+    //                         )
+    //                 ) {
+    //                     if (
+    //                         moment(dateString[0]).format("DD-MM-YYYY") !== booking.startDate &&
+    //                         moment(dateString[0]).format("DD-MM-YYYY") !== booking.endDate &&
+    //                         moment(dateString[1]).format("DD-MM-YYYY") !== booking.startDate &&
+    //                         moment(dateString[1]).format("DD-MM-YYYY") !== booking.endDate
+    //                     ) {
+    //                         availability = true;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         if (availability === true || (court.currentBooking && court.currentBooking.length == 0)) { // Added check for court.currentBooking
+    //             confirmBooking.push(court);
+    //         }
+    //     }
+    //     setBookedCourt(confirmBooking);
+    // }
+
+
+
 
     const disabledDate = (current) => {
         // Can not select days before yesterday and today
@@ -113,7 +171,7 @@ const Home = () => {
                 ) : courts.length > 1 ? (
                     courts.map((court) => {
                         return <div className="col-md-9 mt-3">
-                            <Courts court={court} startDate={startDate} endDate={endDate} />
+                            <Court court={court} startDate={startDate} endDate={endDate} />
                         </div>
                     })
                 ) : (
@@ -123,5 +181,6 @@ const Home = () => {
         </div>
     );
 }
+
 
 export default Home;
