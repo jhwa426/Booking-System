@@ -24,8 +24,7 @@ const Home = () => {
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
 
-    const [bookedCourt, setBookedCourt] = useState([]);
-
+    const [isAvailable, setIsAvailable] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -36,7 +35,6 @@ const Home = () => {
                 const data = await response.json();
 
                 setCourts(data);
-                setBookedCourt(data);
                 setIsLoading(false);
 
             } catch (error) {
@@ -48,70 +46,53 @@ const Home = () => {
         fetchData();
     }, []);
 
-    // function filterByDate(date, dateString) {
-    //     // date is an array of Moment.js objects representing the start and end dates,
-    //     // dateString is an array of strings representing the formatted start and end dates.
-
+    // Default
+    // function SelectedTime(value, dateString) {
     //     setStartDate(dateString[0]);
     //     setEndDate(dateString[1]);
+
+    //     console.log(dateString[0]); // 05-07-2024 10:00
+    //     console.log(dateString[1]);
     // }
 
-    // Default
+
+    // TEST 1
     function SelectedTime(value, dateString) {
         setStartDate(dateString[0]);
         setEndDate(dateString[1]);
 
         console.log(dateString[0]); // 05-07-2024 10:00
         console.log(dateString[1]);
+
+        // Check if the selected time range is already booked
+        const selectedStart = new Date(dateString[0]);
+        const selectedEnd = new Date(dateString[1]);
+
+        const startHours = selectedStart.getHours();
+        const startMinutes = selectedStart.getMinutes().toString().padStart(2, '0');
+
+        const endHours = selectedEnd.getHours();
+        const endMinutes = selectedEnd.getMinutes().toString().padStart(2, '0');
+
+        console.log(startHours, startMinutes, endHours, endMinutes);
+
+        for (let court of courts) {
+            for (let booking of court.currentBookings) {
+                const bookingStart = new Date(booking.startDate);
+                const bookingEnd = new Date(booking.endDate);
+
+                // Check if the selected time range overlaps with the booking time range
+                if ((selectedStart >= bookingStart && selectedStart <= bookingEnd) ||
+                    (selectedEnd >= bookingStart && selectedEnd <= bookingEnd) ||
+                    (selectedStart <= bookingStart && selectedEnd >= bookingEnd)) {
+                    alert(`Court ${court.name} is already booked between ${startHours}:${startMinutes} and ${endHours}:${endMinutes}. Please select the other time.`);
+                    return;
+                }
+            }
+        }
+
+        console.log("The selected time range is available for all courts.");
     }
-
-
-
-    // TEST
-    // function SelectedTime(value, dateString) {
-    //     setStartDate(dateString[0]);
-    //     setEndDate(dateString[1]);
-
-    //     console.log(setStartDate(dateString[0]));
-    //     console.log(setStartDate(dateString[1]));
-
-    //     let confirmBooking = []
-    //     let availability = false;
-
-    //     for (const court of courts) { // Changed from confirmBooking to courts
-    //         if (court.currentBooking && court.currentBooking.length > 0) { // Added check for court.currentBooking
-    //             for (const booking of court.currentBooking) {
-    //                 if (
-    //                     !moment(
-    //                         moment(moment(dateString[0]).format("DD-MM-YYYY")).isBetween(
-    //                             booking.startDate,
-    //                             booking.endDate
-    //                         )
-    //                     ) &&
-    //                     !moment(
-    //                         moment(dateString[1]).format("DD-MM-YYYY")).isBetween(
-    //                             booking.startDate, booking.endDate
-    //                         )
-    //                 ) {
-    //                     if (
-    //                         moment(dateString[0]).format("DD-MM-YYYY") !== booking.startDate &&
-    //                         moment(dateString[0]).format("DD-MM-YYYY") !== booking.endDate &&
-    //                         moment(dateString[1]).format("DD-MM-YYYY") !== booking.startDate &&
-    //                         moment(dateString[1]).format("DD-MM-YYYY") !== booking.endDate
-    //                     ) {
-    //                         availability = true;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //         if (availability === true || (court.currentBooking && court.currentBooking.length == 0)) { // Added check for court.currentBooking
-    //             confirmBooking.push(court);
-    //         }
-    //     }
-    //     setBookedCourt(confirmBooking);
-    // }
-
-
 
 
     const disabledDate = (current) => {
@@ -149,7 +130,6 @@ const Home = () => {
                 <div className="col-md-5">
                     {/* TEST */}
                     {/* <RangePicker format="DD-MM-YYYY" onChange={filterByDate} /> */}
-
                     <RangePicker
                         disabledDate={disabledDate}
                         showTime={{
@@ -161,7 +141,6 @@ const Home = () => {
                         format="DD-MM-YYYY HH:mm"
                         onChange={SelectedTime}
                     />
-
                 </div>
             </div>
 
