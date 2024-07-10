@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Modal, Button, Carousel } from 'react-bootstrap';
 import "./Court.css";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const Courts = ({ court, startDate, endDate }) => {
     const [show, setShow] = useState(false);
@@ -18,7 +19,13 @@ const Courts = ({ court, startDate, endDate }) => {
     const handleBookNowClick = (event) => {
         if (!isBookingAvailable) {
             event.preventDefault();
-            alert('Please select a date and time range first.');
+
+            Swal.fire({
+                title: 'Sorry!',
+                text: 'Please select a date and time range first.',
+                icon: 'error',
+                confirmButtonText: 'Close'
+            });
         }
     };
 

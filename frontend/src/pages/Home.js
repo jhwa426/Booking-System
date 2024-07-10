@@ -4,6 +4,7 @@ import Court from "../components/Court/Court";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
 import { DatePicker } from 'antd';
+import Swal from 'sweetalert2'
 
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -23,8 +24,6 @@ const Home = () => {
 
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
-
-    const [isAvailable, setIsAvailable] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,13 +67,15 @@ const Home = () => {
         const selectedStart = new Date(dateString[0]);
         const selectedEnd = new Date(dateString[1]);
 
+        let availableCourts = [...courts];
+
         const startHours = selectedStart.getHours();
         const startMinutes = selectedStart.getMinutes().toString().padStart(2, '0');
 
         const endHours = selectedEnd.getHours();
         const endMinutes = selectedEnd.getMinutes().toString().padStart(2, '0');
 
-        console.log(startHours, startMinutes, endHours, endMinutes);
+        // console.log(startHours, startMinutes, endHours, endMinutes); // 18 '00' 20 '30'
 
         for (let court of courts) {
             for (let booking of court.currentBookings) {
@@ -85,15 +86,38 @@ const Home = () => {
                 if ((selectedStart >= bookingStart && selectedStart <= bookingEnd) ||
                     (selectedEnd >= bookingStart && selectedEnd <= bookingEnd) ||
                     (selectedStart <= bookingStart && selectedEnd >= bookingEnd)) {
-                    alert(`Court ${court.name} is already booked between ${startHours}:${startMinutes} and ${endHours}:${endMinutes}. Please select the other time.`);
-                    return;
+                    // alert(
+                    //     `${court.name} is already booked between ${startHours}:${startMinutes} and ${endHours}:${endMinutes}. 
+                    //     \nPlease select the other time.`
+                    // );
+
+                    Swal.fire({
+                        title: 'Sorry!',
+                        text: `${court.name} is already booked between ${startHours}:${startMinutes} and ${endHours}:${endMinutes}. 
+                                \nPlease select the other time.`,
+                        icon: 'error',
+                        confirmButtonText: 'Close'
+                    });
+
+                    // Remove the court from the availableCourts array
+                    availableCourts = availableCourts.filter(c => c._id !== court._id);
                 }
             }
         }
 
-        console.log("The selected time range is available for all courts.");
-    }
+        if (availableCourts.length === courts.length) {
+            // alert("The selected time range is available for all courts.");
 
+            Swal.fire({
+                title: 'Success!',
+                text: 'The selected time range is available for all courts.',
+                icon: 'success',
+                confirmButtonText: 'Continue'
+            });
+        }
+
+        setCourts(availableCourts); // Update the state of the courts
+    }
 
     const disabledDate = (current) => {
         // Can not select days before yesterday and today
@@ -147,7 +171,7 @@ const Home = () => {
             <div className="row main-row mt-5">
                 {IsLoading ? (
                     <h1 className="loading-text">Data Loading...<Loader /></h1>
-                ) : courts.length > 1 ? (
+                ) : courts.length > 0 ? (
                     courts.map((court) => {
                         return <div className="col-md-9 mt-3">
                             <Court court={court} startDate={startDate} endDate={endDate} />
@@ -157,6 +181,7 @@ const Home = () => {
                     <Error />
                 )}
             </div>
+
         </div>
     );
 }
