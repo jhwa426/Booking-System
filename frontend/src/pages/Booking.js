@@ -5,6 +5,7 @@ import "./Booking.css";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
 
+import StripeCheckout from 'react-stripe-checkout';
 import moment from 'moment';
 
 
@@ -56,7 +57,26 @@ const Booking = () => {
         fetchData();
     }, [courtId]);
 
-    async function payNow() {
+    // async function payNow() {
+    //     const bookingDetails = {
+    //         court,
+    //         userId: JSON.parse(localStorage.getItem("currentUser"))._id,
+    //         startDate,
+    //         endDate,
+    //         totalHours,
+    //         totalAmount,
+    //     }
+    //     try {
+    //         const response = await axios.post("/api/bookings/bookingCourt", bookingDetails);
+    //     } catch (error) {
+    //         console.error('Error booking court:', error.response.data);
+    //     }
+
+    // }
+
+    async function payNow(payData) {
+        console.log(payData);
+
         const bookingDetails = {
             court,
             userId: JSON.parse(localStorage.getItem("currentUser"))._id,
@@ -66,20 +86,14 @@ const Booking = () => {
             totalAmount,
         }
         try {
-            const response = await axios.post("/api/bookings/bookingCourt", bookingDetails);
+            const response = await axios.post("/api/bookings/bookingCourt", bookingDetails, payData);
         } catch (error) {
             console.error('Error booking court:', error.response.data);
         }
-
     }
-
 
     return (
         <div className="m-5">
-            {/* TEST */}
-            {/* <h1>Booking Screen</h1> */}
-            {/* {courtId ? <h1>ID: {courtId}</h1> : <div>No courtId provided</div>} */}
-
             {IsLoading ? (<h1 className="loading-text"><Loader /></h1>) : court ? (
                 <div className="row payment-row">
                     <div className="col-md-5">
@@ -113,7 +127,16 @@ const Booking = () => {
                         </div>
 
                         <div className="btn-area">
-                            <button className="btn btn-primary" onClick={payNow}>Pay Now</button>
+
+                            <StripeCheckout
+                                token={payNow}
+                                stripeKey={process.env.REACT_APP_StripeKey}
+                                currency="NZD"
+                                amount={totalAmount * 100}
+                            >
+                                <button className="btn btn-primary">Pay Now</button>
+                            </StripeCheckout>
+
                         </div>
                     </div>
                 </div>

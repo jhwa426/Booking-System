@@ -6,10 +6,9 @@ import Error from "../components/Error/Error";
 import { DatePicker } from 'antd';
 import Swal from 'sweetalert2'
 
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
-import moment from "moment";
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -55,13 +54,12 @@ const Home = () => {
     // }
 
 
-    // TEST 1
     function SelectedTime(value, dateString) {
         setStartDate(dateString[0]);
         setEndDate(dateString[1]);
 
-        console.log(dateString[0]); // 05-07-2024 10:00
-        console.log(dateString[1]);
+        // console.log(dateString[0]); // 05-07-2024 10:00
+        // console.log(dateString[1]);
 
         // Check if the selected time range is already booked
         const selectedStart = new Date(dateString[0]);
@@ -86,6 +84,7 @@ const Home = () => {
                 if ((selectedStart >= bookingStart && selectedStart <= bookingEnd) ||
                     (selectedEnd >= bookingStart && selectedEnd <= bookingEnd) ||
                     (selectedStart <= bookingStart && selectedEnd >= bookingEnd)) {
+
                     // alert(
                     //     `${court.name} is already booked between ${startHours}:${startMinutes} and ${endHours}:${endMinutes}. 
                     //     \nPlease select the other time.`
@@ -106,8 +105,6 @@ const Home = () => {
         }
 
         if (availableCourts.length === courts.length) {
-            // alert("The selected time range is available for all courts.");
-
             Swal.fire({
                 title: 'Success!',
                 text: 'The selected time range is available for all courts.',

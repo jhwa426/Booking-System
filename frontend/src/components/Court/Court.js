@@ -78,7 +78,7 @@ const Courts = ({ court, startDate, endDate }) => {
 
                 <Modal.Footer>
                     <Link to={`/book/${court._id}/${startDate}/${endDate}`}>
-                        <button className="btn btn-primary m-2" disabled={!isBookingAvailable}>Book Now</button>
+                        <button className="btn btn-primary m-2" onClick={handleBookNowClick}>Book Now</button>
                     </Link>
 
 

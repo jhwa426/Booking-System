@@ -19,6 +19,7 @@
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
+    "react-stripe-checkout": "^2.6.3",
     "sweetalert2": "^11.12.2",
     "web-vitals": "^2.1.4"
   },
