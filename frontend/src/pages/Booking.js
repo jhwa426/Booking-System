@@ -74,8 +74,8 @@ const Booking = () => {
 
     // }
 
-    async function payNow(payData) {
-        console.log(payData);
+    async function payNow(token) {
+        console.log(token);
 
         const bookingDetails = {
             court,
@@ -84,9 +84,10 @@ const Booking = () => {
             endDate,
             totalHours,
             totalAmount,
+            token,
         }
         try {
-            const response = await axios.post("/api/bookings/bookingCourt", bookingDetails, payData);
+            const response = await axios.post("/api/bookings/bookingCourt", bookingDetails);
         } catch (error) {
             console.error('Error booking court:', error.response.data);
         }
