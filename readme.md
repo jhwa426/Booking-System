@@ -6,7 +6,7 @@
 - Backend connectivity via HTTP
 - Court details and user informations with authentication on MongoDb
 - User authentication
-- Payment Methods (stripe JS)
+- Payment Methods API (stripe JS)
 - UI development (React Bootstrap, React Spinners, SweetAlert2, )
 
 </p>
