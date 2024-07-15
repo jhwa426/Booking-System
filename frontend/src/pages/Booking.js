@@ -7,6 +7,7 @@ import Error from "../components/Error/Error";
 
 import StripeCheckout from 'react-stripe-checkout';
 import moment from 'moment';
+import Swal from 'sweetalert2'
 
 
 const Booking = () => {
@@ -87,8 +88,26 @@ const Booking = () => {
             token,
         }
         try {
+            setIsLoading(true);
             const response = await axios.post("/api/bookings/bookingCourt", bookingDetails);
+            setIsLoading(false);
+
+            Swal.fire({
+                title: 'Successful',
+                text: 'Your court has been successfully booked!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(response => {
+                window.location.href = "/home"
+            });
+
         } catch (error) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Error in booking',
+                icon: 'error',
+                confirmButtonText: 'Close'
+            })
             console.error('Error booking court:', error.response.data);
         }
     }
