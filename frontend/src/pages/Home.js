@@ -17,12 +17,19 @@ dayjs.extend(timezone);
 const { RangePicker } = DatePicker;
 
 const Home = () => {
+    // State management
     const [courts, setCourts] = useState([]);
     const [IsLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
 
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
+
+    const [searchCourt, setSearchCourt] = useState("");
+    const [typeCourt, setTypeCourt] = useState("all");
+
+    const [filteredCourts, setFilteredCourts] = useState([]);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,6 +40,7 @@ const Home = () => {
                 const data = await response.json();
 
                 setCourts(data);
+                setFilteredCourts(data);
                 setIsLoading(false);
 
             } catch (error) {
@@ -142,15 +150,38 @@ const Home = () => {
         return minutes;
     }
 
+    function filterBySearch() {
+        let availableCourts = [...courts];
+
+        const filteredCourts = availableCourts.filter(
+            court => court.name.toLowerCase().includes(searchCourt.toLowerCase())
+        );
+
+        setCourts(filteredCourts);
+    }
+
+    function filterByType(event) {
+        setTypeCourt(event);
+
+        let availableCourts = [...courts];
+
+        if (event !== "all") {
+            const filteredCourts = availableCourts.filter(
+                court => court.type.toLowerCase() === event.toLowerCase()
+            );
+            setFilteredCourts(filteredCourts);
+        }
+        else {
+            setFilteredCourts(courts);
+        }
+    }
 
 
     return (
         <div className="container">
 
-            <div className="row main-row mt-5">
-                <div className="col-md-5">
-                    {/* TEST */}
-                    {/* <RangePicker format="DD-MM-YYYY" onChange={filterByDate} /> */}
+            <div className="row main-row mt-5 bs">
+                <div className="col-md-3">
                     <RangePicker
                         disabledDate={disabledDate}
                         showTime={{
@@ -163,19 +194,39 @@ const Home = () => {
                         onChange={SelectedTime}
                     />
                 </div>
+
+                <div className="col-md-5">
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search Courts"
+                        value={searchCourt}
+                        onChange={(event) => { setSearchCourt(event.target.value) }}
+                        onKeyUp={filterBySearch}
+                    />
+                </div>
+
+                <div className="col-md-2">
+                    <select
+                        value={typeCourt}
+                        onChange={(event) => { filterByType(event.target.value) }}
+                    >
+                        <option value="all">All</option>
+                        <option value="indoor">Indoor</option>
+                        <option value="outdoor">Outdoor</option>
+                    </select>
+                </div>
             </div>
 
             <div className="row main-row mt-5">
                 {IsLoading ? (
                     <h1 className="loading-text">Data Loading...<Loader /></h1>
-                ) : courts.length > 0 ? (
-                    courts.map((court) => {
+                ) : (
+                    filteredCourts.map((court) => {
                         return <div className="col-md-9 mt-3">
                             <Court court={court} startDate={startDate} endDate={endDate} />
                         </div>
                     })
-                ) : (
-                    <Error />
                 )}
             </div>
 

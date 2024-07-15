@@ -58,22 +58,6 @@ const Booking = () => {
         fetchData();
     }, [courtId]);
 
-    // async function payNow() {
-    //     const bookingDetails = {
-    //         court,
-    //         userId: JSON.parse(localStorage.getItem("currentUser"))._id,
-    //         startDate,
-    //         endDate,
-    //         totalHours,
-    //         totalAmount,
-    //     }
-    //     try {
-    //         const response = await axios.post("/api/bookings/bookingCourt", bookingDetails);
-    //     } catch (error) {
-    //         console.error('Error booking court:', error.response.data);
-    //     }
-
-    // }
 
     async function payNow(token) {
         console.log(token);
