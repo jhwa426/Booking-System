@@ -16,7 +16,7 @@ input,
 select {
     box-shadow: none;
     margin-top: 10px;
-    /* border: 2px solid black; */
+    border-radius: 3px;
     width: 100%;
 }
 

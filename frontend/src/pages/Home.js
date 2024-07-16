@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import "./Home.css";
 import Court from "../components/Court/Court";
 import Loader from "../components/Loader/Loader";
-import Error from "../components/Error/Error";
 import { DatePicker } from 'antd';
 import Swal from 'sweetalert2'
 
@@ -18,7 +17,7 @@ const { RangePicker } = DatePicker;
 
 const Home = () => {
     // State management
-    const [courts, setCourts] = useState([]);
+    const [courts, setCourts] = useState([]); // The original list of courts fetched from the API
     const [IsLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
 
@@ -28,7 +27,7 @@ const Home = () => {
     const [searchCourt, setSearchCourt] = useState("");
     const [typeCourt, setTypeCourt] = useState("all");
 
-    const [filteredCourts, setFilteredCourts] = useState([]);
+    const [filteredCourts, setFilteredCourts] = useState([]); // This is used to store the list of courts that match the search and type filters
 
 
     useEffect(() => {
@@ -51,16 +50,6 @@ const Home = () => {
 
         fetchData();
     }, []);
-
-    // Default
-    // function SelectedTime(value, dateString) {
-    //     setStartDate(dateString[0]);
-    //     setEndDate(dateString[1]);
-
-    //     console.log(dateString[0]); // 05-07-2024 10:00
-    //     console.log(dateString[1]);
-    // }
-
 
     function SelectedTime(value, dateString) {
         setStartDate(dateString[0]);
@@ -150,6 +139,7 @@ const Home = () => {
         return minutes;
     }
 
+    // Search 
     function filterBySearch() {
         let availableCourts = [...courts];
 
@@ -157,9 +147,10 @@ const Home = () => {
             court => court.name.toLowerCase().includes(searchCourt.toLowerCase())
         );
 
-        setCourts(filteredCourts);
+        setFilteredCourts(filteredCourts);
     }
 
+    // Type
     function filterByType(event) {
         setTypeCourt(event);
 

@@ -55,7 +55,7 @@ const Register = () => {
                         <input
                             type="text"
                             className="form-control register-form"
-                            placeholder="Username" value={name}
+                            placeholder="Full name" value={name}
                             onChange={(event) => { setName(event.target.value) }}
                             required
                         />

@@ -9,6 +9,14 @@ const { v4: uuidv4 } = require('uuid');
 const Booking = require("../models/booking");
 const Court = require("../models/court");
 
+function generateTransactionId() {
+    let transactionId = '';
+    for (let i = 0; i < 10; i++) {
+        transactionId += Math.floor(Math.random() * 10);
+    }
+    return transactionId;
+}
+
 
 router.post("/bookingCourt", async (req, res) => {
     const {
@@ -51,7 +59,7 @@ router.post("/bookingCourt", async (req, res) => {
                 endDate,
                 totalHours,
                 totalAmount,
-                transactionId: "1234",
+                transactionId: generateTransactionId(),
             });
 
             const savedBooking = await newBooking.save();
@@ -80,5 +88,25 @@ router.post("/bookingCourt", async (req, res) => {
     }
 
 });
+
+router.post("/getBookingsByUserId", async (req, res) => {
+    const {
+        court,
+        userId,
+        startDate,
+        endDate,
+        totalHours,
+        totalAmount,
+        token,
+        status,
+    } = req.body;
+
+    try {
+        const bookings = await Booking.find({ userId: userId });
+        res.send(bookings);
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+})
 
 module.exports = router;
