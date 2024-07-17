@@ -43,10 +43,6 @@ const Courts = ({ court, startDate, endDate }) => {
                 <p>Location : {court.location}</p>
 
                 <div className="view-details">
-                    {/* <Link to={`/book/${court._id}/${startDate}/${endDate}`}>
-                        <button className="btn btn-primary m-2" disabled={!isBookingAvailable} >Book Now</button>
-                    </Link> */}
-
                     <Link to={isBookingAvailable ? `/book/${court._id}/${startDate}/${endDate}` : '#'} onClick={handleBookNowClick}>
                         <button className="btn btn-primary m-2">Book Now</button>
                     </Link>
@@ -61,13 +57,13 @@ const Courts = ({ court, startDate, endDate }) => {
 
                 <Modal.Body>
                     <Carousel prevLabel="" nextLabel="">
-                        {court.imgURLs.map((img) => {
+                        {court.imgURLs.map((img, index) => {
                             return (
-                                <Carousel.Item>
+                                <Carousel.Item key={index}>
                                     <img className="d-block w-100 detail-img" src={img} />
                                     <Carousel.Caption>
-                                        <h3>Detail title</h3>
-                                        <p>Detail description</p>
+                                        <h3>{court.name}</h3>
+                                        <p>{court.description}</p>
                                     </Carousel.Caption>
                                 </Carousel.Item>
                             )

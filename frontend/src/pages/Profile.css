@@ -1,8 +1,18 @@
-.payment-section {
+.profile-section {
     text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
 }
 
 .payment-row {
     justify-content: center;
     margin-top: 50px;
+}
+
+.cancel-btn {
+    background-color: black;
+    box-shadow: none;
+    margin-top: 10px;
 }

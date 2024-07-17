@@ -15,7 +15,7 @@ const Booking = () => {
     const { courtId, startDate, endDate } = useParams();
 
     // useState
-    const [IsLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     const [court, setCourt] = useState();
     const [totalAmount, setTotalAmount] = useState(0);
@@ -60,8 +60,6 @@ const Booking = () => {
 
 
     async function payNow(token) {
-        console.log(token);
-
         const bookingDetails = {
             court,
             userId: JSON.parse(localStorage.getItem("currentUser"))._id,
@@ -98,7 +96,7 @@ const Booking = () => {
 
     return (
         <div className="m-5">
-            {IsLoading ? (<h1 className="loading-text"><Loader /></h1>) : court ? (
+            {isLoading ? (<h1 className="loading-text"><Loader /></h1>) : court ? (
                 <div className="row payment-row">
                     <div className="col-md-5">
                         <h1>{court.name}</h1>
@@ -131,7 +129,6 @@ const Booking = () => {
                         </div>
 
                         <div className="btn-area">
-
                             <StripeCheckout
                                 token={payNow}
                                 stripeKey={process.env.REACT_APP_StripeKey}
@@ -140,7 +137,6 @@ const Booking = () => {
                             >
                                 <button className="btn btn-primary">Pay Now</button>
                             </StripeCheckout>
-
                         </div>
                     </div>
                 </div>

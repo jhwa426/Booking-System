@@ -1,11 +1,6 @@
-import React, { useState, CSSProperties } from 'react';
+import React, { useState } from 'react';
 import HashLoader from "react-spinners/ClipLoader";
-
-const override: CSSProperties = {
-    display: "block",
-    margin: "0 auto",
-    borderColor: "red",
-};
+import "./Loader.css";
 
 const Loader = () => {
     let [loading, setLoading] = useState(true);
@@ -16,7 +11,6 @@ const Loader = () => {
             <HashLoader
                 color="#000"
                 loading={loading}
-                css={override}
                 size={80}
             />
         </div>

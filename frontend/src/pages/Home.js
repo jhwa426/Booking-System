@@ -52,11 +52,8 @@ const Home = () => {
     }, []);
 
     function SelectedTime(value, dateString) {
-        setStartDate(dateString[0]);
+        setStartDate(dateString[0]); // 05-07-2024 10:00
         setEndDate(dateString[1]);
-
-        // console.log(dateString[0]); // 05-07-2024 10:00
-        // console.log(dateString[1]);
 
         // Check if the selected time range is already booked
         const selectedStart = new Date(dateString[0]);
@@ -64,13 +61,11 @@ const Home = () => {
 
         let availableCourts = [...courts];
 
-        const startHours = selectedStart.getHours();
-        const startMinutes = selectedStart.getMinutes().toString().padStart(2, '0');
+        const startHours = selectedStart.getHours(); // 18
+        const startMinutes = selectedStart.getMinutes().toString().padStart(2, '0'); // '00' 
 
-        const endHours = selectedEnd.getHours();
-        const endMinutes = selectedEnd.getMinutes().toString().padStart(2, '0');
-
-        // console.log(startHours, startMinutes, endHours, endMinutes); // 18 '00' 20 '30'
+        const endHours = selectedEnd.getHours(); // 20 
+        const endMinutes = selectedEnd.getMinutes().toString().padStart(2, '0'); //'30'
 
         for (let court of courts) {
             for (let booking of court.currentBookings) {
@@ -81,11 +76,6 @@ const Home = () => {
                 if ((selectedStart >= bookingStart && selectedStart <= bookingEnd) ||
                     (selectedEnd >= bookingStart && selectedEnd <= bookingEnd) ||
                     (selectedStart <= bookingStart && selectedEnd >= bookingEnd)) {
-
-                    // alert(
-                    //     `${court.name} is already booked between ${startHours}:${startMinutes} and ${endHours}:${endMinutes}. 
-                    //     \nPlease select the other time.`
-                    // );
 
                     Swal.fire({
                         title: 'Sorry!',
@@ -139,7 +129,7 @@ const Home = () => {
         return minutes;
     }
 
-    // Search 
+    // Search
     function filterBySearch() {
         let availableCourts = [...courts];
 
@@ -170,9 +160,8 @@ const Home = () => {
 
     return (
         <div className="container">
-
             <div className="row main-row mt-5 bs">
-                <div className="col-md-3">
+                <div className="col-md-4">
                     <RangePicker
                         disabledDate={disabledDate}
                         showTime={{
@@ -213,17 +202,17 @@ const Home = () => {
                 {IsLoading ? (
                     <h1 className="loading-text">Data Loading...<Loader /></h1>
                 ) : (
-                    filteredCourts.map((court) => {
-                        return <div className="col-md-9 mt-3">
-                            <Court court={court} startDate={startDate} endDate={endDate} />
-                        </div>
+                    filteredCourts.map((court, index) => {
+                        return (
+                            <div key={index} className="col-md-9 mt-3">
+                                <Court court={court} startDate={startDate} endDate={endDate} />
+                            </div>
+                        )
                     })
                 )}
             </div>
-
         </div>
     );
 }
-
 
 export default Home;
