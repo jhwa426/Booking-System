@@ -134,7 +134,7 @@ const Home = () => {
         let availableCourts = [...courts];
 
         const filteredCourts = availableCourts.filter(
-            court => court.name.toLowerCase().includes(searchCourt.toLowerCase())
+            (court) => court.name.toLowerCase().includes(searchCourt.toLowerCase())
         );
 
         setFilteredCourts(filteredCourts);
@@ -148,7 +148,7 @@ const Home = () => {
 
         if (event !== "all") {
             const filteredCourts = availableCourts.filter(
-                court => court.type.toLowerCase() === event.toLowerCase()
+                (court) => court.type.toLowerCase() === event.toLowerCase()
             );
             setFilteredCourts(filteredCourts);
         }

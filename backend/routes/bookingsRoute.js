@@ -11,13 +11,14 @@ const Court = require("../models/court");
 
 function generateTransactionId() {
     let transactionId = '';
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
         transactionId += Math.floor(Math.random() * 10);
     }
     return transactionId;
 }
 
 
+// New Booking Court
 router.post("/bookingCourt", async (req, res) => {
     const {
         court,
@@ -28,7 +29,6 @@ router.post("/bookingCourt", async (req, res) => {
         totalAmount,
         token,
     } = req.body;
-
 
     try {
         const customer = await stripe.customers.create({
@@ -89,6 +89,7 @@ router.post("/bookingCourt", async (req, res) => {
 
 });
 
+// Get Bookings By UserId
 router.post("/getBookingsByUserId", async (req, res) => {
     const {
         court,
@@ -107,6 +108,33 @@ router.post("/getBookingsByUserId", async (req, res) => {
     } catch (error) {
         return res.status(400).json({ message: error });
     }
+});
+
+
+// Cancel Booking
+router.post("/cancelBooking", async (req, res) => {
+    const { bookingId, courtId } = req.body;
+
+    try {
+        const currentBooking = await Booking.findOne({ _id: bookingId });
+        currentBooking.status = "Cancelled";
+        await currentBooking.save();
+
+        const court = await Court.findOne({ _id: courtId });
+
+        const bookings = court.currentBookings;
+        const findBooking = bookings.filter((booking) => booking.bookingId.toString() !== bookingId);
+
+        court.currentBookings = findBooking;
+
+        await court.save();
+
+        return res.send("Your booking cancelled successfully");
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
 })
+
+
 
 module.exports = router;

@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
 import "./Profile.css";
+import React, { useEffect, useState } from 'react'
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
-import { Tabs } from 'antd';
-import { TabPane } from "react-bootstrap";
+
 import axios from "axios";
+
+import { Tabs } from 'antd';
+
+const { TabPane } = Tabs;
 
 const Profile = () => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -60,7 +63,17 @@ export const MyBookings = () => {
             }
         }
         fetchData();
-    }, [])
+    }, []);
+
+    async function cancelBooking(bookingId, courtId) {
+        try {
+            setIsLoading(true);
+            const response = await axios.post("/api/bookings/cancelBooking/", { bookingId, courtId });
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error booking court:', error.response.data);
+        }
+    }
 
     return (
         <div className="col-md">
@@ -72,6 +85,11 @@ export const MyBookings = () => {
                             {bookings.map((booking, index) => (
                                 <div key={index}>
                                     <hr />
+                                    {/* TEST */}
+                                    <p><b>Booking ID</b> : {booking._id}</p>
+                                    <p><b>Court ID</b> : {booking.courtId}</p>
+                                    {/* TEST */}
+                                    <p><b>Booking ID</b> : {booking._id}</p>
                                     <p><b>Court Name</b> : {booking.court}</p>
                                     <p><b>Booking Date and Time</b> : {booking.startDate} to {booking.endDate}</p>
                                     <p><b>Max Players</b> : {booking.maxPlayers} people</p>
@@ -79,7 +97,10 @@ export const MyBookings = () => {
                                     <p><b>Booking Status</b> : {booking.status === "Booked" ? "Confirmed" : "Cancelled"}</p>
 
                                     <div className="text-right">
-                                        <button className="btn btn-primary cancel-btn">Cancel booking</button>
+                                        <button
+                                            className="btn btn-primary cancel-btn"
+                                            onClick={() => { cancelBooking(booking._id, booking.courtId) }}
+                                        >Cancel booking</button>
                                     </div>
 
                                     <hr />
