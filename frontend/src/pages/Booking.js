@@ -32,6 +32,19 @@ const Booking = () => {
     const displayDate = moment(startDate, 'DD-MM-YYYY HH:mm').format('dddd, DD-MM-YYYY, hh:mm A');
 
     useEffect(() => {
+
+        if (!localStorage.getItem("currentUser")) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Please Login as a user',
+                icon: 'error',
+                confirmButtonText: 'Close',
+                willClose: () => {
+                    window.location.href = "/login";
+                }
+            });
+        }
+
         const fetchData = async () => {
             try {
                 setIsLoading(true);
@@ -65,6 +78,7 @@ const Booking = () => {
             userId: JSON.parse(localStorage.getItem("currentUser"))._id,
             startDate,
             endDate,
+            maxPlayers: court.maxPlayers,
             totalHours,
             totalAmount,
             token,
@@ -78,9 +92,9 @@ const Booking = () => {
                 title: 'Successful',
                 text: 'Your court has been successfully booked!',
                 icon: 'success',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'Close'
             }).then(response => {
-                window.location.href = "/home"
+                window.location.href = "/profile"
             });
 
         } catch (error) {

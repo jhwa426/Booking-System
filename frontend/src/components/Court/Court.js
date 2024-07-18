@@ -77,18 +77,11 @@ const Courts = ({ court, startDate, endDate }) => {
                         <button className="btn btn-primary m-2" onClick={handleBookNowClick}>Book Now</button>
                     </Link>
 
-
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-
-                    {/* <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button> */}
                 </Modal.Footer>
-
             </Modal>
-
         </div>
     );
 }

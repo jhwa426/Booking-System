@@ -11,30 +11,6 @@ const Login = () => {
     const [IsLoading, setIsLoading] = useState(false);
     const [error, setError] = useState();
 
-    // function login() {
-    //     if (email === "" || password === "") {
-    //         setError("Email and Password cannot be empty");
-    //         return;
-    //     }
-
-    //     const user = {
-    //         email,
-    //         password,
-    //     }
-    //     try {
-    //         setIsLoading(true);
-    //         const registeredAccount = axios.post("/api/users/login", user).data;
-    //         setIsLoading(false);
-
-    //         localStorage.setItem("currentUser", JSON.stringify(registeredAccount));
-    //         window.location.href = "/home";
-
-    //     } catch (error) {
-    //         setIsLoading(false);
-    //         setError(true);
-    //     }
-    // }
-
     async function login() {
         if (email === "" || password === "") {
             setError("Email and Password cannot be empty");
@@ -52,14 +28,13 @@ const Login = () => {
             setIsLoading(false);
 
             localStorage.setItem("currentUser", JSON.stringify(registeredAccount));
-            window.location.href = "/home";
+            window.location.href = "/profile";
 
         } catch (error) {
             setIsLoading(false);
             setError(true);
         }
     }
-
 
     return (
         <>

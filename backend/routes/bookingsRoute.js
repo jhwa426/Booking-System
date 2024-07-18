@@ -25,6 +25,7 @@ router.post("/bookingCourt", async (req, res) => {
         userId,
         startDate,
         endDate,
+        maxPlayers,
         totalHours,
         totalAmount,
         token,
@@ -57,6 +58,7 @@ router.post("/bookingCourt", async (req, res) => {
                 userId,
                 startDate,
                 endDate,
+                maxPlayers,
                 totalHours,
                 totalAmount,
                 transactionId: generateTransactionId(),
@@ -120,14 +122,14 @@ router.post("/cancelBooking", async (req, res) => {
         currentBooking.status = "Cancelled";
         await currentBooking.save();
 
-        const court = await Court.findOne({ _id: courtId });
+        const availableCourt = await Court.findOne({ _id: courtId });
 
-        const bookings = court.currentBookings;
-        const findBooking = bookings.filter((booking) => booking.bookingId.toString() !== bookingId);
+        const bookings = availableCourt.currentBookings;
+        const cancelBooking = bookings.filter((booking) => booking.bookingId.toString() !== bookingId);
 
-        court.currentBookings = findBooking;
+        availableCourt.currentBookings = cancelBooking;
 
-        await court.save();
+        await availableCourt.save();
 
         return res.send("Your booking cancelled successfully");
     } catch (error) {

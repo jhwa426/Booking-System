@@ -93,7 +93,7 @@ const Home = () => {
 
         if (availableCourts.length === courts.length) {
             Swal.fire({
-                title: 'Success!',
+                title: 'Confirmed',
                 text: 'The selected time range is available for all courts.',
                 icon: 'success',
                 confirmButtonText: 'Continue'

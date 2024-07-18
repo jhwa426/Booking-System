@@ -21,6 +21,10 @@ const bookingSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    maxPlayers: {
+        type: String,
+        required: true
+    },
     totalHours: {
         type: Number,
         required: true

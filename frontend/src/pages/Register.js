@@ -4,6 +4,7 @@ import axios from "axios";
 import Success from "../components/Success/Success";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
+import Swal from 'sweetalert2'
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -29,6 +30,15 @@ const Register = () => {
                 setIsLoading(false);
                 setSuccess(true);
 
+                Swal.fire({
+                    title: 'Successful',
+                    text: 'Your account has been successfully registered!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(response => {
+                    window.location.href = "/login";
+                });
+
                 setName("");
                 setEmail("");
                 setPassword("");
@@ -39,7 +49,12 @@ const Register = () => {
                 setError(true);
             }
         } else {
-            alert("Passwords are not matched! Please review your password");
+            Swal.fire({
+                title: 'Error',
+                text: 'Passwords are not matched! Please review your password',
+                icon: 'error',
+                confirmButtonText: 'Close'
+            })
         }
     }
 

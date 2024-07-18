@@ -1,50 +1,11 @@
-import "./Profile.css";
+import "./MyBookings.css";
 import React, { useEffect, useState } from 'react'
 import Loader from "../components/Loader/Loader";
-import Error from "../components/Error/Error";
 
 import axios from "axios";
 import Swal from 'sweetalert2'
-import { Tabs, Divider, Flex, Tag } from 'antd';
 
-
-
-const { TabPane } = Tabs;
-
-const Profile = () => {
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-
-    useEffect(() => {
-        if (!user) {
-            window.location.href = "/login";
-        }
-    }, [])
-
-    return (
-        <div className="container">
-            <div className="profile-section">
-                <Tabs defaultActiveKey="2">
-                    <TabPane tab="My Profile" key="1">
-                        <h1>My Profile</h1>
-                        <hr />
-                        <h1>Name: {user.name}</h1>
-                        <h1>Email: {user.email}</h1>
-                        {user.isAdmin ? <h1>Admin status : <Tag color="green">Administrator</Tag></h1> : <h1><Tag color="blue">Booking.Football Member</Tag></h1>}
-                        <hr />
-                    </TabPane>
-                    <TabPane tab="My Bookings" key="2">
-                        <MyBookings />
-                    </TabPane>
-                </Tabs>
-            </div>
-        </div>
-    );
-}
-
-export default Profile;
-
-
-export const MyBookings = () => {
+const MyBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
@@ -77,9 +38,9 @@ export const MyBookings = () => {
                 title: 'Successful',
                 text: 'Your court has been successfully cancelled!',
                 icon: 'success',
-                confirmButtonText: 'Close'
+                confirmButtonText: 'OK'
             }).then(response => {
-                window.location.reload();
+                window.location.href = "/profile"
             });
         } catch (error) {
             Swal.fire({
@@ -88,7 +49,7 @@ export const MyBookings = () => {
                 icon: 'error',
                 confirmButtonText: 'Close'
             })
-            console.error('Error booking court:', error.response.data);
+            console.error('Error cancel court:', error.response.data);
         }
     }
 
@@ -102,22 +63,24 @@ export const MyBookings = () => {
                             {bookings.map((booking, index) => (
                                 <div key={index}>
                                     <hr />
+                                    {/* TEST */}
                                     <p><b>Booking ID</b> : {booking._id}</p>
-                                    <p><b>TransactionId ID</b> : {booking.transactionId}</p>
+                                    <p><b>Court ID</b> : {booking.courtId}</p>
+                                    {/* TEST */}
+                                    <p><b>Booking ID</b> : {booking._id}</p>
                                     <p><b>Court Name</b> : {booking.court}</p>
                                     <p><b>Booking Date and Time</b> : {booking.startDate} to {booking.endDate}</p>
                                     <p><b>Max Players</b> : {booking.maxPlayers} people</p>
                                     <p><b>Paid Amount</b> : ${booking.totalAmount}</p>
-                                    <p><b>Booking Status</b> : {booking.status === "Booked" ? <Tag color="blue">CONFIRMED</Tag> : (<Tag color="red">CANCELLED</Tag>)}</p>
+                                    <p><b>Booking Status</b> : {booking.status === "Booked" ? "Confirmed" : "Cancelled"}</p>
+
                                     <div className="text-right">
-                                        {booking.status !== "Cancelled" && (
-                                            <button
-                                                className="btn btn-primary cancel-btn"
-                                                onClick={() => { cancelBooking(booking._id, booking.courtId) }}
-                                            >Cancel booking
-                                            </button>
-                                        )}
+                                        <button
+                                            className="btn btn-primary cancel-btn"
+                                            onClick={() => { cancelBooking(booking._id, booking.courtId) }}
+                                        >Cancel booking</button>
                                     </div>
+
                                     <hr />
                                 </div>
                             ))}
@@ -128,3 +91,5 @@ export const MyBookings = () => {
         </div>
     );
 }
+
+export default MyBookings
