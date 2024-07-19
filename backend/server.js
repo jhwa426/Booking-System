@@ -7,7 +7,7 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors({
-    origin: 'https://golden-douhua-552818.netlify.app/'
+    origin: 'https://booking-football.netlify.app/'
 }));
 
 const port = process.env.PORT || 4000;
