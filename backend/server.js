@@ -24,3 +24,9 @@ app.use("/api/bookings", bookingsRoute); //const bookingModel = mongoose.model("
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
+
+const cors = require('cors');
+
+app.use(cors({
+    origin: 'https://golden-douhua-552818.netlify.app/'
+}));
