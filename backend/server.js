@@ -4,6 +4,12 @@ const express = require('express');
 
 const app = express();
 
+const cors = require('cors');
+
+app.use(cors({
+    origin: 'https://golden-douhua-552818.netlify.app/'
+}));
+
 const port = process.env.PORT || 4000;
 
 const dbConfig = require("./db");
