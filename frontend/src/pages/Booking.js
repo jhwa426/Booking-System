@@ -49,7 +49,7 @@ const Booking = () => {
             try {
                 setIsLoading(true);
 
-                const response = await axios.post("/api/courts/getCourtById", { courtId });
+                const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/courts/getCourtById", { courtId });
 
                 if (response.status !== 200) {
                     throw new Error('Network response was not OK');
