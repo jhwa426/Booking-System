@@ -29,6 +29,16 @@ app.use("/api/users", usersRoute); //const userModel = mongoose.model("user", us
 
 app.use("/api/bookings", bookingsRoute); //const bookingModel = mongoose.model("booking", bookingSchema);
 
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// The "catchall" handler: for any request that doesn't match one above,
+// send back React's index.html file.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
+});
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
