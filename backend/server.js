@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors({
     origin: ['https://booking-system-frontend.onrender.com'],
-    methods: ['GET,POST'],
+    methods: ['GET', 'POST'],
     credentials: true
 }));
 
