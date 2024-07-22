@@ -14,12 +14,12 @@ function App() {
             <Navbar />
             <BrowserRouter>
                 <Routes>
-                    <Route path="*" element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/book/:courtId/:startDate/:endDate" element={<Booking />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="*" element={<Home />} />
                 </Routes>
             </BrowserRouter>
         </div>

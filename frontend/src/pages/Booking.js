@@ -48,10 +48,11 @@ const Booking = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
+                //// Localhost
+                // const response = await axios.post("/api/courts/getCourtById", { courtId });
 
+                //// Backend URL
                 const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/courts/getCourtById", { courtId });
-                // const backendURL = process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "https://booking-system-backend-ee3i.onrender.com";
-                // const response = await axios.post(`${backendURL}/api/courts/getCourtById`, { courtId });
 
                 if (response.status !== 200) {
                     throw new Error('Network response was not OK');
@@ -87,10 +88,11 @@ const Booking = () => {
         }
         try {
             setIsLoading(true);
-            const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/bookings/bookingCourt", bookingDetails);
+            //// Localhost
+            // const response = await axios.post("/api/bookings/bookingCourt", bookingDetails);
 
-            // const backendURL = process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "https://booking-system-backend-ee3i.onrender.com";
-            // const response = await axios.post(`${backendURL}/api/bookings/bookingCourt`, bookingDetails);
+            //// Backend URL
+            const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/bookings/bookingCourt", bookingDetails);
             setIsLoading(false);
 
             Swal.fire({
