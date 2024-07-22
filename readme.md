@@ -4,10 +4,10 @@
 
 - Utilising React JS and the MERN stack (MongoDB, Express, React, and Node) stack
 - Backend connectivity via HTTP
-- Court details and user informations with authentication on MongoDb
+- Court details and user informations with authentication on MongoDB
 - User authentication
 - Payment Methods API (stripe JS)
-- UI development (React Bootstrap, React Spinners, SweetAlert2, )
+- UI development (React Bootstrap, React Spinners, SweetAlert2)
 
 </p>
 
