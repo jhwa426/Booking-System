@@ -7,7 +7,7 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors({
-    origin: ['https://booking-football.netlify.app'],
+    origin: ['https://booking-system-frontend.onrender.com'],
     methods: ['GET,POST'],
     credentials: true
 }));
