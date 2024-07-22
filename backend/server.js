@@ -29,11 +29,11 @@ app.use("/api/users", usersRoute); //const userModel = mongoose.model("user", us
 app.use("/api/bookings", bookingsRoute); //const bookingModel = mongoose.model("booking", bookingSchema);
 
 
+// This should be placed after all routes
 app.get('*', (req, res) => {
     // Dynamically resolve the path to your 'build' directory
-    res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
 });
-
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
