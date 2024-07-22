@@ -34,8 +34,9 @@ const Home = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
+                // const response = await fetch("/api/courts/getAllCourts");
 
-                const response = await fetch("https://booking-system-backend-ee3i.onrender.com/api/courts/getAllCourts");
+                const response = await fetch(process.env.NODE_ENV === 'development' ? "http://localhost:3000/api/courts/getAllCourts" : "/api/courts/getAllCourts");
                 const data = await response.json();
 
                 setCourts(data);
