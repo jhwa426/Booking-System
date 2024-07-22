@@ -28,14 +28,6 @@ app.use("/api/users", usersRoute); //const userModel = mongoose.model("user", us
 
 app.use("/api/bookings", bookingsRoute); //const bookingModel = mongoose.model("booking", bookingSchema);
 
-
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-});
-
-
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
