@@ -38,7 +38,9 @@ const Home = () => {
                 // const response = await fetch("/api/courts/getAllCourts");
 
                 //// Backend URL
-                const response = await fetch("https://booking-system-backend-ee3i.onrender.com/api/courts/getAllCourts");
+                // const response = await fetch("https://booking-system-backend-ee3i.onrender.com/api/courts/getAllCourts");
+
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/courts/getAllCourts`);
 
                 const data = await response.json();
 

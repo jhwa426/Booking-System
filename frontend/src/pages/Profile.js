@@ -59,7 +59,10 @@ export const MyBookings = () => {
                 // const response = await axios.post("/api/bookings/getBookingsByUserId", { userId: user._id });
 
                 //// Backend URL
-                const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/bookings/getBookingsByUserId", { userId: user._id });
+                // const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/bookings/getBookingsByUserId", { userId: user._id });
+
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/bookings/getBookingsByUserId`, { userId: user._id });
+
                 setBookings(response.data.reverse()); // Reverse the array here for now need to fix descending order later
                 setIsLoading(false);
             } catch (error) {
@@ -78,7 +81,10 @@ export const MyBookings = () => {
             // const response = await axios.post("/api/bookings/cancelBooking/", { bookingId, courtId });
 
             //// Backend URL
-            const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/bookings/cancelBooking/", { bookingId, courtId });
+            // const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/bookings/cancelBooking/", { bookingId, courtId });
+
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/bookings/cancelBooking/`, { bookingId, courtId });
+
             console.log(response.data);
 
             Swal.fire({

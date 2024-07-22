@@ -27,7 +27,10 @@ const Login = () => {
             // const response = await axios.post("/api/users/login", user);
 
             //// Backend URL
-            const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/users/login", user);
+            // const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/users/login", user);
+
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/login`, user);
+
             const registeredAccount = response.data;
             setIsLoading(false);
 
