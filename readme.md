@@ -36,13 +36,15 @@
 <details>
 To run this Football Booking Management System locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/jhwa426/Booking-System`
-2. Navigate to the project directory: `cd Booking-System/frontend`
-3. Install the dependencies: `npm install`
-4. Navigate to the project directory `cd Booking-System/backend`
+1. Open Terminal.
+2. Change the current working directory to the location where you want the cloned directory.
+3. Clone the repository: `git clone https://github.com/jhwa426/Booking-System`
+4. Navigate to the project directory: `cd Booking-System/frontend`
 5. Install the dependencies: `npm install`
-6. Start the development server for backend `nodemon server`
-7. Start the development server for frontend: `npm start`
-8. Open your browser and visit: `http://localhost:3000`
+6. Navigate to the project directory `cd Booking-System/backend`
+7. Install the dependencies: `npm install`
+8. Start the development server for backend `nodemon server`
+9. Start the development server for frontend: `npm start`
+10. Open your browser and visit: `http://localhost:3000`
 
 </details>
