@@ -23,10 +23,10 @@ const Login = () => {
         }
         try {
             setIsLoading(true);
-            // const response = await axios.post("/api/users/login", user);
+            const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/users/login", user);
 
-            const backendURL = process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "https://booking-system-backend-ee3i.onrender.com";
-            const response = await axios.post(`${backendURL}/api/users/login`, user);
+            // const backendURL = process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "https://booking-system-backend-ee3i.onrender.com";
+            // const response = await axios.post(`${backendURL}/api/users/login`, user);
             const registeredAccount = response.data;
             setIsLoading(false);
 

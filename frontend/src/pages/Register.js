@@ -26,10 +26,10 @@ const Register = () => {
             }
             try {
                 setIsLoading(true);
-                // const register = axios.post("api/users/register", user).data;
+                const register = axios.post("https://booking-system-backend-ee3i.onrender.com/api/users/register", user).data;
 
-                const backendURL = process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "https://booking-system-backend-ee3i.onrender.com";
-                const register = axios.post(`${backendURL}/api/users/register`, user).data;
+                // const backendURL = process.env.NODE_ENV === 'development' ? "http://localhost:3000" : "https://booking-system-backend-ee3i.onrender.com";
+                // const register = axios.post(`${backendURL}/api/users/register`, user).data;
                 setIsLoading(false);
                 setSuccess(true);
 
