@@ -26,8 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -47,7 +46,13 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:4000/",
+  "proxy": {
+    "/api": {
+      "target": "https://booking-system-backend-ee3i.onrender.com",
+      "secure": false,
+      "changeOrigin": true
+    }
+  },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }

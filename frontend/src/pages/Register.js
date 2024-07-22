@@ -16,8 +16,6 @@ const Register = () => {
     const [IsLoading, setIsLoading] = useState(false);
     const [error, setError] = useState();
 
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
     function registerUser() {
         if (password === confirmPassword) {
             const user = {
@@ -28,12 +26,11 @@ const Register = () => {
             }
             try {
                 setIsLoading(true);
-                const register = axios.post(`${backendUrl}/api/users/register`, user).data;
                 //// Localhost
-                // const register = axios.post("/api/users/register", user).data;
+                // const register = axios.post("https://booking-system-backend-ee3i.onrender.com/api/users/register", user).data;
 
                 //// Backend URL
-                // const register = axios.post("https://booking-system-backend-ee3i.onrender.com/api/users/register", user).data;
+                const register = axios.post("https://booking-system-backend-ee3i.onrender.com/api/users/register", user).data;
                 setIsLoading(false);
                 setSuccess(true);
 
