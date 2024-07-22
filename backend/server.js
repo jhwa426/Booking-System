@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-    origin: ['https://booking-system-frontend.onrender.com'],
+    origin: ['https://booking-football.onrender.com'],
     methods: ['GET', 'POST'],
     credentials: true
 }));
