@@ -26,12 +26,6 @@ const Register = () => {
             }
             try {
                 setIsLoading(true);
-                //// Localhost
-                // const register = axios.post("/api/users/register", user).data;
-
-                //// Backend URL
-                // const register = axios.post("https://booking-system-backend-ee3i.onrender.com/api/users/register", user).data;
-
                 const register = axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/register`, user).data;
 
                 setIsLoading(false);

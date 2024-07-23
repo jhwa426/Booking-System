@@ -48,12 +48,6 @@ const Booking = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-                //// Localhost
-                // const response = await axios.post("/api/courts/getCourtById", { courtId });
-
-                //// Backend URL
-                // const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/courts/getCourtById", { courtId });
-
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/courts/getCourtById`, { courtId });
 
                 if (response.status !== 200) {
@@ -90,12 +84,6 @@ const Booking = () => {
         }
         try {
             setIsLoading(true);
-            //// Localhost
-            // const response = await axios.post("/api/bookings/bookingCourt", bookingDetails);
-
-            //// Backend URL
-            // const response = await axios.post("https://booking-system-backend-ee3i.onrender.com/api/bookings/bookingCourt", bookingDetails);
-
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/bookings/bookingCourt`, bookingDetails);
 
             setIsLoading(false);

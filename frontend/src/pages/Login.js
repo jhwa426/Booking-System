@@ -45,9 +45,9 @@ const Login = () => {
 
     return (
         <>
-            {IsLoading && <Loader />}
             <div className="row login-content">
                 <div className="col-md-5 mt-5">
+                    {IsLoading && <h1><Loader />Login...</h1>}
                     {error && <Error message="Invalid Credentials" />}
                     <div className="bs">
                         <h2 className="login-title">Login</h2>

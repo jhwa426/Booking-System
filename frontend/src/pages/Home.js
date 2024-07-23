@@ -34,12 +34,6 @@ const Home = () => {
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-                //// Localhost
-                // const response = await fetch("/api/courts/getAllCourts");
-
-                //// Backend URL
-                // const response = await fetch("https://booking-system-backend-ee3i.onrender.com/api/courts/getAllCourts");
-
                 const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/courts/getAllCourts`);
 
                 const data = await response.json();
@@ -206,7 +200,7 @@ const Home = () => {
 
             <div className="row main-row mt-5">
                 {IsLoading ? (
-                    <h1 className="loading-text">Data Loading...<Loader /></h1>
+                    <h1 className="loading-text">Courts Fetching in 10 seconds...<Loader /></h1>
                 ) : (
                     filteredCourts.map((court, index) => {
                         return (
