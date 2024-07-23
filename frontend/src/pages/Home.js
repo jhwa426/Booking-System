@@ -200,7 +200,7 @@ const Home = () => {
 
             <div className="row main-row mt-5">
                 {IsLoading ? (
-                    <h1 className="loading-text">Courts Fetching in 10 seconds...<Loader /></h1>
+                    <h1 className="loading-text">Courts Fetching...<Loader /></h1>
                 ) : (
                     filteredCourts.map((court, index) => {
                         return (
