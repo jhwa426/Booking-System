@@ -135,7 +135,18 @@ router.post("/cancelBooking", async (req, res) => {
     } catch (error) {
         return res.status(400).json({ message: error });
     }
-})
+});
+
+
+// Admin - Get All Bookings
+router.get('/getAllBookings', async (req, res) => {
+    try {
+        const currentBookings = await Booking.find();
+        res.send(currentBookings);
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+});
 
 
 

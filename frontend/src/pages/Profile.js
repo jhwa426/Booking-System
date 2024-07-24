@@ -1,11 +1,10 @@
 import "./Profile.css";
 import React, { useEffect, useState } from 'react'
 import Loader from "../components/Loader/Loader";
-import Error from "../components/Error/Error";
 
 import axios from "axios";
 import Swal from 'sweetalert2'
-import { Tabs, Divider, Flex, Tag } from 'antd';
+import { Tabs, Tag } from 'antd';
 
 
 
@@ -105,7 +104,8 @@ export const MyBookings = () => {
                                 <div key={index}>
                                     <hr />
                                     <p><b>Booking ID</b> : {booking._id}</p>
-                                    <p><b>TransactionId ID</b> : {booking.transactionId}</p>
+                                    <p><b>Transaction ID</b> : {booking.transactionId}</p>
+                                    <p><b>User ID</b> : {booking.userId}</p>
                                     <p><b>Court Name</b> : {booking.court}</p>
                                     <p><b>Booking Date and Time</b> : {booking.startDate} to {booking.endDate}</p>
                                     <p><b>Max Players</b> : {booking.maxPlayers} people</p>

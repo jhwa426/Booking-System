@@ -1,0 +1,96 @@
+.admin-section {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.admin-text {
+    font-size: 30px;
+    text-align: center;
+}
+
+.text-header {
+    font-size: 25px;
+    text-align: left;
+    margin: 15px;
+}
+
+
+/* Container to enable horizontal scrolling */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    .table {
+        width: 100%;
+        display: block;
+    }
+
+    .table thead,
+    .table tbody,
+    .table th,
+    .table td,
+    .table tr {
+        display: block;
+    }
+
+    .table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .table tr {
+        margin: 0 0 1rem 0;
+    }
+
+    .table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    .table td:before {
+        position: absolute;
+        top: 15px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .table td:nth-of-type(1):before {
+        content: "Booking ID";
+    }
+
+    .table td:nth-of-type(2):before {
+        content: "Transaction ID";
+    }
+
+    .table td:nth-of-type(3):before {
+        content: "User ID";
+    }
+
+    .table td:nth-of-type(4):before {
+        content: "Court Name";
+    }
+
+    .table td:nth-of-type(5):before {
+        content: "Date and Time";
+    }
+
+    .table td:nth-of-type(6):before {
+        content: "Paid Amount";
+    }
+
+    .table td:nth-of-type(7):before {
+        content: "Booking Status";
+    }
+}
