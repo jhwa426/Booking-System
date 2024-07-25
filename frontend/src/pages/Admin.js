@@ -21,7 +21,7 @@ const Admin = () => {
         <div className="mt-3 mtl-3 mr-3 bs">
             <div className="admin-section">
                 <h1 className="admin-text">Admin Panel</h1>
-                <Tabs defaultActiveKey="4">
+                <Tabs defaultActiveKey="1">
                     <TabPane tab="Booking" key="1">
                         <Bookings />
                     </TabPane>
