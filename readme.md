@@ -11,6 +11,7 @@
 - Payment Methods API (stripe JS)
 - UI development (React Bootstrap, React Spinners, SweetAlert2)
 - Deployment of the website by Render.com for both Frontend and Backend [Booking.Football](https://booking-football.onrender.com/)
+- Feel free to try on the website as an administrator (email: admin@a.com, password: admin)
 
 </p>
 
