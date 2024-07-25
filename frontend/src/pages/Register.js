@@ -27,7 +27,6 @@ const Register = () => {
             try {
                 setIsLoading(true);
                 const register = axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/register`, user).data;
-
                 setIsLoading(false);
                 setSuccess(true);
 

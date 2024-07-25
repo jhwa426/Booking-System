@@ -1,12 +1,9 @@
 import "./Profile.css";
 import React, { useEffect, useState } from 'react'
 import Loader from "../components/Loader/Loader";
-
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { Tabs, Tag } from 'antd';
-
-
 
 const { TabPane } = Tabs;
 

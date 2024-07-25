@@ -4,7 +4,6 @@ import axios from "axios";
 import "./Booking.css";
 import Loader from "../components/Loader/Loader";
 import Error from "../components/Error/Error";
-
 import StripeCheckout from 'react-stripe-checkout';
 import moment from 'moment';
 import Swal from 'sweetalert2'

@@ -47,4 +47,16 @@ router.post("/login", async (req, res) => {
     }
 });
 
+
+// Admin - Get All Users
+router.get("/getAllUsers", async (req, res) => {
+    try {
+        const currentUsers = await User.find();
+        res.send(currentUsers);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
 module.exports = router;

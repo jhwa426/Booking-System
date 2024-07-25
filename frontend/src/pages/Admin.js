@@ -4,15 +4,24 @@ import "./Admin.css";
 import axios from "axios";
 import Loader from "../components/Loader/Loader";
 
-
 const { TabPane } = Tabs;
 
 const Admin = () => {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+
+    useEffect(() => {
+        if (!user.isAdmin) {
+            window.location.href = "/home"
+        }
+    }, [])
+
+
+
     return (
         <div className="mt-3 mtl-3 mr-3 bs">
             <div className="admin-section">
                 <h1 className="admin-text">Admin Panel</h1>
-                <Tabs defaultActiveKey="1">
+                <Tabs defaultActiveKey="4">
                     <TabPane tab="Booking" key="1">
                         <Bookings />
                     </TabPane>
@@ -23,7 +32,7 @@ const Admin = () => {
                         <h1>TEST</h1>
                     </TabPane>
                     <TabPane tab="Users" key="4">
-                        <h1>TEST</h1>
+                        <Users />
                     </TabPane>
                 </Tabs>
             </div>
@@ -44,9 +53,10 @@ export function Bookings() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setIsLoading(false);
+                setIsLoading(true);
                 const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/bookings/getAllBookings`);
                 setBookings(response.data);
+                setIsLoading(false);
             } catch (error) {
                 console.error(error);
                 setIsLoading(true);
@@ -59,10 +69,7 @@ export function Bookings() {
     return (
         <div className="row">
             <div className="col-md">
-                {/* TEST AREA */}
-                <h1 className="text-header"> {bookings.length} Bookings Loaded</h1 >
-                {/* TEST AREA */}
-
+                {isLoading ? <h1 className="text-header"><Loader /></h1> : (bookings.length <= 0 ? <h1 className="text-header">There is no booking</h1> : <h1 className="text-header"> {bookings.length} Bookings Loaded </h1>)}
                 <div div className="table-responsive" >
                     <table className="table table-bordered table-dark ">
                         <thead>
@@ -93,11 +100,11 @@ export function Bookings() {
                                             </tr>
                                         ))}
                                     </>
-                                ) : (<h1>There is no booking</h1>)
+                                ) : (<h1>No Data Loaded</h1>)
                             )}
                         </tbody>
                     </table>
-                </div >
+                </div>
             </div>
         </div>
     );
@@ -114,9 +121,10 @@ export function Courts() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setIsLoading(false);
+                setIsLoading(true);
                 const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/courts/getAllCourts`);
                 setCourts(response.data);
+                setIsLoading(false);
             } catch (error) {
                 console.error(error);
                 setIsLoading(true);
@@ -129,10 +137,7 @@ export function Courts() {
     return (
         <div className="row">
             <div className="col-md">
-                {/* TEST AREA */}
-                <h1 className="text-header"> {courts.length} Courts Loaded</h1 >
-                {/* TEST AREA */}
-
+                {isLoading ? <h1 className="text-header"><Loader /></h1> : (courts.length <= 0 ? <h1 className="text-header">There is no court</h1> : <h1 className="text-header"> {courts.length} Courts Loaded </h1>)}
                 <div div className="table-responsive" >
                     <table className="table table-bordered table-dark ">
                         <thead>
@@ -147,7 +152,7 @@ export function Courts() {
                             </tr>
                         </thead>
                         <tbody>
-                            {isLoading ? (<h1>All Bookings Loading...<Loader /></h1>) : (
+                            {isLoading ? (<h1>All Courts Loading...<Loader /></h1>) : (
                                 courts.length > 0 ? (
                                     <>
                                         {courts.map((court, index) => (
@@ -163,11 +168,72 @@ export function Courts() {
                                             </tr>
                                         ))}
                                     </>
-                                ) : (<h1>There is no courts</h1>)
+                                ) : (<h1>No Data Load</h1>)
                             )}
                         </tbody>
                     </table>
-                </div >
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+//// Admin - Users
+export function Users() {
+    const [users, setUsers] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setIsLoading(true);
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/getAllUsers`);
+                setUsers(response.data);
+                setIsLoading(false);
+            } catch (error) {
+                console.error(error);
+                setIsLoading(true);
+                setError(error);
+            }
+        }
+        fetchData();
+    }, [])
+
+    return (
+        <div className="row">
+            <div className="col-md">
+                {isLoading ? <h1 className="text-header"><Loader /></h1> : (users.length <= 0 ? <h1 className="text-header">There is no user</h1> : <h1 className="text-header"> {users.length} Users Loaded </h1>)}
+                <div div className="table-responsive" >
+                    <table className="table table-bordered table-dark ">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>User Name</th>
+                                <th>User Email</th>
+                                <th>User Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {isLoading ? (<h1>All Users Loading...<Loader /></h1>) : (
+                                users.length > 0 ? (
+                                    <>
+                                        {users.map((user, index) => (
+                                            <tr key={index}>
+                                                <td>{user._id}</td>
+                                                <td>{user.name}</td>
+                                                <td>{user.email}</td>
+                                                <td>{user.isAdmin ? <h1><Tag color="green">Administrator</Tag></h1> : <h1><Tag color="blue">Booking.Football Member</Tag></h1>}</td>
+                                                <hr />
+                                            </tr>
+                                        ))}
+                                    </>
+                                ) : (<h1>No Data Load</h1>)
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

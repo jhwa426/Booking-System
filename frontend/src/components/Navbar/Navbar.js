@@ -14,6 +14,10 @@ const Navbar = () => {
         window.location.href = "/login";
     }
 
+    function admin() {
+        window.location.href = "/admin";
+    }
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg">
@@ -31,6 +35,7 @@ const Navbar = () => {
                                             Hello, {user.name}
                                         </button>
                                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            {user && user.isAdmin && (<a className="dropdown-item" href="/admin" onClick={admin}>Admin</a>)}
                                             <a className="dropdown-item" href="/profile">My Profile</a>
                                             <a className="dropdown-item" href="#" onClick={logout}>Logout</a>
                                         </div>
