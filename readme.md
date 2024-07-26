@@ -11,7 +11,7 @@
 - Payment Methods API (stripe JS)
 - UI development (React Bootstrap, React Spinners, SweetAlert2)
 - Deployment of the website by Render.com for both Frontend and Backend [Booking.Football](https://booking-football.onrender.com/)
-- Feel free to try on the website as an administrator (email: admin@a.com, password: admin)
+- Feel free to try on the website as an administrator (<b>email: admin@a.com, password: admin</b>) : Admin can access the <b>Administration Panel</b> and can manage the <b>current booking, courts, and users.</b> Also, Admin can <b>add a new court</b> for the website.
 
 </p>
 
