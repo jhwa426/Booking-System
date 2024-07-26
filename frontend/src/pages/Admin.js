@@ -227,7 +227,7 @@ export function AddCourt() {
 
             Swal.fire({
                 title: 'Successful',
-                text: 'New Court has been successfully registered!',
+                text: 'New Court has been successfully added!',
                 icon: 'success',
                 confirmButtonText: 'Close'
             }).then(response => {
