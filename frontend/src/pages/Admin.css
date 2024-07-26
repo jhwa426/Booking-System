@@ -17,6 +17,23 @@
     margin: 15px;
 }
 
+.add-court-form {
+    box-shadow: none;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+.add-btn {
+    background-color: black;
+    box-shadow: none;
+    margin-top: 10px;
+}
+
+.add-court-content {
+    justify-content: center;
+    margin-top: 48px
+}
+
 
 /* Container to enable horizontal scrolling */
 .table-responsive {

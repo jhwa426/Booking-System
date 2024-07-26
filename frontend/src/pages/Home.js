@@ -201,6 +201,8 @@ const Home = () => {
             <div className="row main-row mt-5">
                 {IsLoading ? (
                     <h1 className="loading-text">Courts Fetching...<Loader /></h1>
+                ) : filteredCourts.length === 0 ? (
+                    <h1 className="loading-text">There is no court</h1>
                 ) : (
                     filteredCourts.map((court, index) => {
                         return (

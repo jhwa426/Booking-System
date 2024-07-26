@@ -3,6 +3,7 @@ import { Tabs, Tag } from 'antd';
 import "./Admin.css";
 import axios from "axios";
 import Loader from "../components/Loader/Loader";
+import Swal from 'sweetalert2'
 
 const { TabPane } = Tabs;
 
@@ -14,8 +15,6 @@ const Admin = () => {
             window.location.href = "/home"
         }
     }, [])
-
-
 
     return (
         <div className="mt-3 mtl-3 mr-3 bs">
@@ -29,7 +28,7 @@ const Admin = () => {
                         <Courts />
                     </TabPane>
                     <TabPane tab="Add Court" key="3">
-                        <h1>TEST</h1>
+                        <AddCourt />
                     </TabPane>
                     <TabPane tab="Users" key="4">
                         <Users />
@@ -59,7 +58,7 @@ export function Bookings() {
                 setIsLoading(false);
             } catch (error) {
                 console.error(error);
-                setIsLoading(true);
+                setIsLoading(false);
                 setError(error);
             }
         }
@@ -118,6 +117,8 @@ export function Courts() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
 
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -127,7 +128,7 @@ export function Courts() {
                 setIsLoading(false);
             } catch (error) {
                 console.error(error);
-                setIsLoading(true);
+                setIsLoading(false);
                 setError(error);
             }
         }
@@ -142,6 +143,7 @@ export function Courts() {
                     <table className="table table-bordered table-dark ">
                         <thead>
                             <tr>
+                                <th>User ID</th>
                                 <th>Court ID</th>
                                 <th>Court Name</th>
                                 <th>Court Type</th>
@@ -157,6 +159,7 @@ export function Courts() {
                                     <>
                                         {courts.map((court, index) => (
                                             <tr key={index}>
+                                                <td>{currentUser._id}</td>
                                                 <td>{court._id}</td>
                                                 <td>{court.name}</td>
                                                 <td>{court.type}</td>
@@ -179,6 +182,102 @@ export function Courts() {
 }
 
 
+
+//// Admin - Add Court
+export function AddCourt() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState();
+
+    const [name, setName] = useState("");
+    const [location, setLocation] = useState("");
+    const [maxPlayers, setMaxPlayers] = useState("");
+    const [price, setPrice] = useState("");
+    const [type, setType] = useState("");
+
+    const [description, setDescription] = useState("");
+    const [imgURL1, setImgURL1] = useState("");
+    const [imgURL2, setImgURL2] = useState("");
+    const [imgURL3, setImgURL3] = useState("");
+
+    async function addCourt() {
+        if (!name || !location || !maxPlayers || !price || !type || !description || !imgURL1 || !imgURL2 || !imgURL3) {
+            Swal.fire({
+                title: 'Error',
+                text: 'All fields must be filled!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
+        const newCourt = {
+            name,
+            location,
+            maxPlayers: parseInt(maxPlayers),
+            price: parseInt(price),
+            type,
+            description,
+            imgURLs: [imgURL1, imgURL2, imgURL3],
+        }
+        try {
+            setIsLoading(true);
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/courts/addCourt`, newCourt);
+            const addedCourt = response.data;
+            setIsLoading(false);
+
+            Swal.fire({
+                title: 'Successful',
+                text: 'New Court has been successfully registered!',
+                icon: 'success',
+                confirmButtonText: 'Close'
+            }).then(response => {
+                window.location.href = "/home";
+            });
+
+            setName("");
+            setLocation("");
+            setMaxPlayers("");
+            setPrice("");
+            setType("");
+            setDescription("");
+
+            setImgURL1("");
+            setImgURL2("");
+            setImgURL3("");
+
+        } catch (error) {
+            setIsLoading(false);
+            console.log("Error:", error.response ? error.response.data : error.message);
+            setError(error);
+        }
+    }
+
+
+    return (
+        <div className="row add-court-content">
+            <div className="col-md-5">
+                <input type="text" className="form-control add-court-form" placeholder="Court Name" value={name} onChange={(e) => { setName(e.target.value) }} />
+                <input type="text" className="form-control add-court-form" placeholder="Location" value={location} onChange={(e) => { setLocation(e.target.value) }} />
+                <input type="text" className="form-control add-court-form" placeholder="Max Players" value={maxPlayers} onChange={(e) => { setMaxPlayers(e.target.value) }} />
+                <input type="text" className="form-control add-court-form" placeholder="Price" value={price} onChange={(e) => { setPrice(e.target.value) }} />
+                <input type="text" className="form-control add-court-form" placeholder="Type" value={type} onChange={(e) => { setType(e.target.value) }} />
+            </div>
+
+            <div className="col-md-5">
+                <input type="text" className="form-control add-court-form" placeholder="Description" value={description} onChange={(e) => { setDescription(e.target.value) }} />
+                <input type="text" className="form-control add-court-form" placeholder="Image URL 1" value={imgURL1} onChange={(e) => { setImgURL1(e.target.value) }} />
+                <input type="text" className="form-control add-court-form" placeholder="Image URL 2" value={imgURL2} onChange={(e) => { setImgURL2(e.target.value) }} />
+                <input type="text" className="form-control add-court-form" placeholder="Image URL 3" value={imgURL3} onChange={(e) => { setImgURL3(e.target.value) }} />
+                <div className="text-right">
+                    <button className="btn btn-primary add-btn" onClick={addCourt}>Add Court</button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+
 //// Admin - Users
 export function Users() {
     const [users, setUsers] = useState([]);
@@ -194,7 +293,7 @@ export function Users() {
                 setIsLoading(false);
             } catch (error) {
                 console.error(error);
-                setIsLoading(true);
+                setIsLoading(false);
                 setError(error);
             }
         }
