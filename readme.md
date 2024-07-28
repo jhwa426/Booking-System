@@ -5,14 +5,13 @@
 ## [Booking.Football](https://booking-football.onrender.com/)
 
 - Utilising React JS and the MERN stack (MongoDB, Express, React, and Node) stack
-- Backend connectivity via HTTP
+- Facilitated the development of React applications with backend connectivity via HTTP and incorporated user authentication
+- Feel free to try on the website as an administrator (<b>email: admin@a.com, password: admin</b>) : Admin can access the <b>Administration Panel</b> and can manage the <b>current booking, courts, and users.</b>
+- Implemented a persistent storage application for <b>CRUD</b> on the website (<b>Create</b> the court, <b>Read</b> the current booking, <b>Update</b> the court and <b>Delete</b> the court)
 - Court details and user informations with authentication on MongoDB
-- User authentication
 - Payment Methods API (stripe JS)
 - UI development (React Bootstrap, React Spinners, SweetAlert2)
 - Deployment of the website by Render.com for both Frontend and Backend [Booking.Football](https://booking-football.onrender.com/)
-- Feel free to try on the website as an administrator (<b>email: admin@a.com, password: admin</b>) : Admin can access the <b>Administration Panel</b> and can manage the <b>current booking, courts, and users.</b>
-- Implemented a persistent storage application for <b>CRUD</b> on the website (<b>Create</b> the court, <b>Read</b> the current booking, <b>Update</b> the court and <b>Delete</b> the court)
 
 </p>
 
