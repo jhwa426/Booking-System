@@ -20,7 +20,7 @@ const Admin = () => {
         <div className="mt-3 mtl-3 mr-3 bs">
             <div className="admin-section">
                 <h1 className="admin-text">Admin Panel</h1>
-                <Tabs defaultActiveKey="1">
+                <Tabs defaultActiveKey="2"> {/* Always set 1 */}
                     <TabPane tab="Booking" key="1">
                         <Bookings />
                     </TabPane>
@@ -135,6 +135,42 @@ export function Courts() {
         fetchData();
     }, [])
 
+
+    // Admin - Delete the current Court
+    async function deleteCourt(id) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/courts/deleteCourt/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            Swal.fire({
+                title: 'Successful',
+                text: 'Court has been successfully deleted!',
+                icon: 'success',
+                confirmButtonText: 'Close'
+            })
+
+            const message = await response.text();
+            console.log(message);
+
+            setCourts(courts.filter(court => court._id !== id));
+        } catch (error) {
+            console.error('There was a problem with the fetch operation: ' + error.message);
+
+            Swal.fire({
+                title: 'Error',
+                text: 'There was a problem deleting the court: ' + error.message,
+                icon: 'error',
+                confirmButtonText: 'Close'
+            })
+        }
+    }
+
+
     return (
         <div className="row">
             <div className="col-md">
@@ -151,6 +187,7 @@ export function Courts() {
                                 <th>Court Location</th>
                                 <th>Current Booking</th>
                                 <th>Max Players</th>
+                                <th>Court Management</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -167,6 +204,7 @@ export function Courts() {
                                                 <td>{court.location}</td>
                                                 <td>{court.currentBookings.length} booked</td>
                                                 <td>{court.maxPlayers}</td>
+                                                <td><button className="btn btn-primary delete-btn" onClick={() => deleteCourt(court._id)}>Delete Court</button></td>
                                                 <hr />
                                             </tr>
                                         ))}
@@ -177,7 +215,7 @@ export function Courts() {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

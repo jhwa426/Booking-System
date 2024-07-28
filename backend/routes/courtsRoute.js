@@ -42,4 +42,25 @@ router.post("/addCourt", async (req, res) => {
 });
 
 
+
+
+// Admin - Delete the current Court
+router.delete("/deleteCourt/:id", async (req, res) => {
+    try {
+        const court = await Court.findById(req.params.id);
+
+        if (!court) {
+            return res.status(404).json({ message: "No court found" })
+        }
+
+        await Court.findByIdAndDelete(req.params.id);
+        res.send("Court deleted successfully");
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+
+
+
+
 module.exports = router;

@@ -23,7 +23,8 @@
     border: 1px solid black;
 }
 
-.add-btn {
+.add-btn,
+delete-btn {
     background-color: black;
     box-shadow: none;
     margin-top: 10px;
