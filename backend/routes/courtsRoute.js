@@ -63,4 +63,43 @@ router.delete("/deleteCourt/:id", async (req, res) => {
 
 
 
+// Admin - Delete the current Court
+router.put('/updateCourt/:id', async (req, res) => {
+    try {
+        const { courtId, name, location, maxPlayers, price, type, description, imgURLs } = req.body;
+
+        // Validate the required fields
+        if (!name || !location || !maxPlayers || !price || !type) {
+            return res.status(400).json({ message: "Missing required fields" });
+        }
+
+        const court = await Court.findById(req.params.id);
+        if (!court) {
+            return res.status(404).json({ message: "No court found" });
+        }
+
+        // Update court details
+        court.courtId = courtId;
+        court.name = name;
+        court.location = location;
+        court.maxPlayers = maxPlayers;
+        court.price = price;
+        court.type = type;
+        court.description = description;
+        court.imgURLs = imgURLs;
+
+        await court.save();
+        res.json({ message: "Court updated successfully", court });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: error.message });
+    }
+});
+
+
+
+
+
+
+
 module.exports = router;

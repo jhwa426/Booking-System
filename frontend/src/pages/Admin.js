@@ -20,18 +20,21 @@ const Admin = () => {
         <div className="mt-3 mtl-3 mr-3 bs">
             <div className="admin-section">
                 <h1 className="admin-text">Admin Panel</h1>
-                <Tabs defaultActiveKey="2"> {/* Always set 1 */}
-                    <TabPane tab="Booking" key="1">
+                <Tabs defaultActiveKey="3">
+                    <TabPane tab="Users" key="1">
+                        <Users />
+                    </TabPane>
+                    <TabPane tab="Booking" key="2">
                         <Bookings />
                     </TabPane>
-                    <TabPane tab="Courts" key="2">
+                    <TabPane tab="Courts" key="3">
                         <Courts />
                     </TabPane>
-                    <TabPane tab="Add Court" key="3">
+                    <TabPane tab="Add Court" key="4">
                         <AddCourt />
                     </TabPane>
-                    <TabPane tab="Users" key="4">
-                        <Users />
+                    <TabPane tab="Update Court" key="5">
+                        <UpdateCourt />
                     </TabPane>
                 </Tabs>
             </div>
@@ -43,7 +46,69 @@ export default Admin;
 
 
 
-//// Admin - Bookings
+//// Admin - Users key="1"
+export function Users() {
+    const [users, setUsers] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setIsLoading(true);
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/getAllUsers`);
+                setUsers(response.data);
+                setIsLoading(false);
+            } catch (error) {
+                console.error(error);
+                setIsLoading(false);
+                setError(error);
+            }
+        }
+        fetchData();
+    }, [])
+
+    return (
+        <div className="row">
+            <div className="col-md">
+                {isLoading ? <h1 className="text-header"><Loader /></h1> : (users.length <= 0 ? <h1 className="text-header">There is no user</h1> : <h1 className="text-header"> {users.length} Users Loaded </h1>)}
+                <div div className="table-responsive" >
+                    <table className="table table-bordered table-dark ">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>User Name</th>
+                                <th>User Email</th>
+                                <th>User Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {isLoading ? (<h1>All Users Loading...<Loader /></h1>) : (
+                                users.length > 0 ? (
+                                    <>
+                                        {users.map((user, index) => (
+                                            <tr key={index}>
+                                                <td>{user._id}</td>
+                                                <td>{user.name}</td>
+                                                <td>{user.email}</td>
+                                                <td>{user.isAdmin ? <h1><Tag color="green">Administrator</Tag></h1> : <h1><Tag color="blue">Booking.Football Member</Tag></h1>}</td>
+                                                <hr />
+                                            </tr>
+                                        ))}
+                                    </>
+                                ) : (<h1>No Data Load</h1>)
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+
+//// Admin - Bookings key="2"
 export function Bookings() {
     const [bookings, setBookings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -111,7 +176,7 @@ export function Bookings() {
 
 
 
-//// Admin - Courts
+//// Admin - Courts key="3"
 export function Courts() {
     const [courts, setCourts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -215,13 +280,13 @@ export function Courts() {
                     </table>
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 
 
 
-//// Admin - Add Court
+//// Admin - Add Court key="4"
 export function AddCourt() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
@@ -257,6 +322,7 @@ export function AddCourt() {
             description,
             imgURLs: [imgURL1, imgURL2, imgURL3],
         }
+
         try {
             setIsLoading(true);
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/courts/addCourt`, newCourt);
@@ -296,8 +362,8 @@ export function AddCourt() {
             <div className="col-md-5">
                 <input type="text" className="form-control add-court-form" placeholder="Court Name" value={name} onChange={(e) => { setName(e.target.value) }} />
                 <input type="text" className="form-control add-court-form" placeholder="Location" value={location} onChange={(e) => { setLocation(e.target.value) }} />
-                <input type="text" className="form-control add-court-form" placeholder="Max Players" value={maxPlayers} onChange={(e) => { setMaxPlayers(e.target.value) }} />
-                <input type="text" className="form-control add-court-form" placeholder="Price" value={price} onChange={(e) => { setPrice(e.target.value) }} />
+                <input type="number" className="form-control add-court-form" placeholder="Max Players" value={maxPlayers} onChange={(e) => { setMaxPlayers(e.target.value) }} />
+                <input type="number" className="form-control add-court-form" placeholder="Price" value={price} onChange={(e) => { setPrice(e.target.value) }} />
                 <input type="text" className="form-control add-court-form" placeholder="Type" value={type} onChange={(e) => { setType(e.target.value) }} />
             </div>
 
@@ -316,62 +382,116 @@ export function AddCourt() {
 
 
 
-//// Admin - Users
-export function Users() {
-    const [users, setUsers] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState();
+//// Admin - Update Court key="5"
+export function UpdateCourt() {
+    const [courtId, setCourtId] = useState("");
+    const [name, setName] = useState("");
+    const [location, setLocation] = useState("");
+    const [maxPlayers, setMaxPlayers] = useState("");
+    const [price, setPrice] = useState("");
+    const [type, setType] = useState("");
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setIsLoading(true);
-                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/getAllUsers`);
-                setUsers(response.data);
-                setIsLoading(false);
-            } catch (error) {
-                console.error(error);
-                setIsLoading(false);
-                setError(error);
-            }
+    const [description, setDescription] = useState("");
+    const [imgURL1, setImgURL1] = useState("");
+    const [imgURL2, setImgURL2] = useState("");
+    const [imgURL3, setImgURL3] = useState("");
+
+
+    async function updateCourt(id) {
+        if (!courtId || !name || !location || !maxPlayers || !price || !type || !description || !imgURL1 || !imgURL2 || !imgURL3) {
+            Swal.fire({
+                title: 'Error',
+                text: 'All fields must be filled!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
         }
-        fetchData();
-    }, [])
+
+        const updateCourt = {
+            courtId,
+            name,
+            location,
+            maxPlayers: parseInt(maxPlayers),
+            price: parseInt(price),
+            type,
+            description,
+            imgURLs: [imgURL1, imgURL2, imgURL3],
+        }
+
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/courts/updateCourt/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updateCourt)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            Swal.fire({
+                title: 'Successful',
+                text: 'Court has been successfully updated!',
+                icon: 'success',
+                confirmButtonText: 'Close'
+            }).then(response => {
+                window.location.href = "/admin";
+            });
+
+            setCourtId("");
+            setName("");
+            setLocation("");
+            setMaxPlayers("");
+            setPrice("");
+
+            setType("");
+            setDescription("");
+            setImgURL1("");
+            setImgURL2("");
+            setImgURL3("");
+
+            const updatedCourt = await response.json();
+
+
+        } catch (error) {
+            console.error('There was a problem with the fetch operation: ' + error.message);
+
+            Swal.fire({
+                title: 'Error',
+                text: 'Please check the court ID! There was a problem updating the court.',
+                icon: 'error',
+                confirmButtonText: 'Close'
+            }).then(response => {
+                window.location.href = "/admin";
+            });
+
+        }
+    }
+
 
     return (
-        <div className="row">
-            <div className="col-md">
-                {isLoading ? <h1 className="text-header"><Loader /></h1> : (users.length <= 0 ? <h1 className="text-header">There is no user</h1> : <h1 className="text-header"> {users.length} Users Loaded </h1>)}
-                <div div className="table-responsive" >
-                    <table className="table table-bordered table-dark ">
-                        <thead>
-                            <tr>
-                                <th>User ID</th>
-                                <th>User Name</th>
-                                <th>User Email</th>
-                                <th>User Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {isLoading ? (<h1>All Users Loading...<Loader /></h1>) : (
-                                users.length > 0 ? (
-                                    <>
-                                        {users.map((user, index) => (
-                                            <tr key={index}>
-                                                <td>{user._id}</td>
-                                                <td>{user.name}</td>
-                                                <td>{user.email}</td>
-                                                <td>{user.isAdmin ? <h1><Tag color="green">Administrator</Tag></h1> : <h1><Tag color="blue">Booking.Football Member</Tag></h1>}</td>
-                                                <hr />
-                                            </tr>
-                                        ))}
-                                    </>
-                                ) : (<h1>No Data Load</h1>)
-                            )}
-                        </tbody>
-                    </table>
+        <div className="row update-court-content">
+            <div className="col-md-5">
+                <input type="text" className="form-control update-court-form" placeholder="Court ID" value={courtId} onChange={(e) => { setCourtId(e.target.value) }} />
+                <input type="text" className="form-control update-court-form" placeholder="Court Name" value={name} onChange={(e) => { setName(e.target.value) }} />
+                <input type="text" className="form-control update-court-form" placeholder="Location" value={location} onChange={(e) => { setLocation(e.target.value) }} />
+                <input type="number" className="form-control update-court-form" placeholder="Max Players" value={maxPlayers} onChange={(e) => { setMaxPlayers(e.target.value) }} />
+                <input type="number" className="form-control update-court-form" placeholder="Price" value={price} onChange={(e) => { setPrice(e.target.value) }} />
+            </div>
+
+            <div className="col-md-5">
+                <input type="text" className="form-control update-court-form" placeholder="Type" value={type} onChange={(e) => { setType(e.target.value) }} />
+                <input type="text" className="form-control update-court-form" placeholder="Description" value={description} onChange={(e) => { setDescription(e.target.value) }} />
+                <input type="text" className="form-control update-court-form" placeholder="Image URL 1" value={imgURL1} onChange={(e) => { setImgURL1(e.target.value) }} />
+                <input type="text" className="form-control update-court-form" placeholder="Image URL 2" value={imgURL2} onChange={(e) => { setImgURL2(e.target.value) }} />
+                <input type="text" className="form-control update-court-form" placeholder="Image URL 3" value={imgURL3} onChange={(e) => { setImgURL3(e.target.value) }} />
+                <div className="text-right">
+                    <button className="btn btn-primary update-btn" onClick={() => updateCourt(courtId)}>Update Court</button>
                 </div>
             </div>
         </div>
-    );
+    )
 }

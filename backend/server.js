@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors({
     origin: ['http://localhost:3000', 'https://booking-football.onrender.com'],
-    methods: ['GET', 'POST', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
 

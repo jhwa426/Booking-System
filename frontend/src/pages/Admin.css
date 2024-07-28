@@ -17,20 +17,27 @@
     margin: 15px;
 }
 
-.add-court-form {
+.add-court-form,
+.update-court-form {
     box-shadow: none;
     margin-top: 10px;
     border: 1px solid black;
 }
 
 .add-btn,
-delete-btn {
+.update-btn {
     background-color: black;
     box-shadow: none;
     margin-top: 10px;
 }
 
-.add-court-content {
+.delete-btn {
+    background-color: black;
+    box-shadow: none;
+}
+
+.add-court-content,
+.update-court-content {
     justify-content: center;
     margin-top: 48px
 }
