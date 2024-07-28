@@ -19,7 +19,7 @@ const Admin = () => {
     return (
         <div className="mt-3 mtl-3 mr-3 bs">
             <div className="admin-section">
-                <h1 className="admin-text">Admin Panel</h1>
+                <h1 className="admin-text">Booking.Football Management</h1>
                 <Tabs defaultActiveKey="3">
                     <TabPane tab="Users" key="1">
                         <Users />
