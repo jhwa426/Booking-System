@@ -91,10 +91,6 @@
         font-weight: bold;
     }
 
-    /* .table td:nth-of-type(0):before {
-        content: "User ID";
-    } */
-
     .table td:nth-of-type(1):before {
         content: "User ID";
     }
