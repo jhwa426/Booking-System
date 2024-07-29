@@ -217,7 +217,9 @@ export function Courts() {
                 text: 'Court has been successfully deleted!',
                 icon: 'success',
                 confirmButtonText: 'Close'
-            })
+            }).then(response => {
+                window.location.href = "/admin";
+            });
 
             const message = await response.text();
             console.log(message);
@@ -396,6 +398,14 @@ export function UpdateCourt() {
     const [imgURL2, setImgURL2] = useState("");
     const [imgURL3, setImgURL3] = useState("");
 
+    useEffect(() => {
+        Swal.fire({
+            title: 'IMPORTANT',
+            text: 'Please make sure the court ID!',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    }, [])
 
     async function updateCourt(id) {
         if (!courtId || !name || !location || !maxPlayers || !price || !type || !description || !imgURL1 || !imgURL2 || !imgURL3) {
