@@ -78,6 +78,7 @@
         position: relative;
         text-align: right;
         padding-left: 30%;
+        font-size: 13px;
     }
 
     .table td:before {
