@@ -38,7 +38,7 @@ const Admin = () => {
                     </TabPane>
                 </Tabs>
             </div>
-        </div >
+        </div>
     );
 }
 
