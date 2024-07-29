@@ -73,7 +73,7 @@ export function Users() {
             <div className="col-md">
                 {isLoading ? <h1 className="text-header"><Loader /></h1> : (users.length <= 0 ? <h1 className="text-header">There is no user</h1> : <h1 className="text-header"> {users.length} Users Loaded </h1>)}
                 <div div className="table-responsive" >
-                    <table className="table table-bordered table-dark ">
+                    <table className="table table-bordered table-dark user-table">
                         <thead>
                             <tr>
                                 <th>User ID</th>
@@ -88,10 +88,10 @@ export function Users() {
                                     <>
                                         {users.map((user, index) => (
                                             <tr key={index}>
-                                                <td>{user._id}</td>
-                                                <td>{user.name}</td>
-                                                <td>{user.email}</td>
-                                                <td>{user.isAdmin ? <h1><Tag color="green">Administrator</Tag></h1> : <h1><Tag color="blue">Booking.Football Member</Tag></h1>}</td>
+                                                <td data-label>{user._id}</td>
+                                                <td data-label>{user.name}</td>
+                                                <td data-label>{user.email}</td>
+                                                <td data-label>{user.isAdmin ? <h1><Tag color="green">Administrator</Tag></h1> : <h1><Tag color="blue">Booking.Football Member</Tag></h1>}</td>
                                                 <hr />
                                             </tr>
                                         ))}
@@ -102,7 +102,7 @@ export function Users() {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
@@ -135,7 +135,7 @@ export function Bookings() {
             <div className="col-md">
                 {isLoading ? <h1 className="text-header"><Loader /></h1> : (bookings.length <= 0 ? <h1 className="text-header">There is no booking</h1> : <h1 className="text-header"> {bookings.length} Bookings Loaded </h1>)}
                 <div div className="table-responsive" >
-                    <table className="table table-bordered table-dark ">
+                    <table className="table table-bordered table-dark booking-table">
                         <thead>
                             <tr>
                                 <th>Booking ID</th>
@@ -153,13 +153,13 @@ export function Bookings() {
                                     <>
                                         {bookings.map((booking, index) => (
                                             <tr key={index}>
-                                                <td>{booking._id}</td>
-                                                <td>{booking.transactionId}</td>
-                                                <td>{booking.userId}</td>
-                                                <td>{booking.court}</td>
-                                                <td>{booking.startDate} to {booking.endDate}</td>
-                                                <td>${booking.totalAmount}</td>
-                                                <td>{booking.status === "Booked" ? <Tag color="blue">CONFIRMED</Tag> : (<Tag color="red">CANCELLED</Tag>)}</td>
+                                                <td data-label>{booking._id}</td>
+                                                <td data-label>{booking.transactionId}</td>
+                                                <td data-label>{booking.userId}</td>
+                                                <td data-label>{booking.court}</td>
+                                                <td data-label>{booking.startDate} to {booking.endDate}</td>
+                                                <td data-label>${booking.totalAmount}</td>
+                                                <td data-label>{booking.status === "Booked" ? <Tag color="blue">CONFIRMED</Tag> : (<Tag color="red">CANCELLED</Tag>)}</td>
                                                 <hr />
                                             </tr>
                                         ))}
@@ -243,7 +243,7 @@ export function Courts() {
             <div className="col-md">
                 {isLoading ? <h1 className="text-header"><Loader /></h1> : (courts.length <= 0 ? <h1 className="text-header">There is no court</h1> : <h1 className="text-header"> {courts.length} Courts Loaded </h1>)}
                 <div div className="table-responsive" >
-                    <table className="table table-bordered table-dark ">
+                    <table className="table table-bordered table-dark court-table">
                         <thead>
                             <tr>
                                 <th>User ID</th>
@@ -263,15 +263,15 @@ export function Courts() {
                                     <>
                                         {courts.map((court, index) => (
                                             <tr key={index}>
-                                                <td>{currentUser._id}</td>
-                                                <td>{court._id}</td>
-                                                <td>{court.name}</td>
-                                                <td>{court.type}</td>
-                                                <td>{court.price}</td>
-                                                <td>{court.location}</td>
-                                                <td>{court.currentBookings.length} booked</td>
-                                                <td>{court.maxPlayers}</td>
-                                                <td><button className="btn btn-primary delete-btn" onClick={() => deleteCourt(court._id)}>Delete Court</button></td>
+                                                <td data-label>{currentUser._id}</td>
+                                                <td data-label>{court._id}</td>
+                                                <td data-label>{court.name}</td>
+                                                <td data-label>{court.type}</td>
+                                                <td data-label>{court.price}</td>
+                                                <td data-label>{court.location}</td>
+                                                <td data-label>{court.currentBookings.length} booked</td>
+                                                <td data-label>{court.maxPlayers}</td>
+                                                <td data-label><button className="btn btn-primary delete-btn" onClick={() => deleteCourt(court._id)}>Delete Court</button></td>
                                                 <hr />
                                             </tr>
                                         ))}

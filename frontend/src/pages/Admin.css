@@ -76,8 +76,8 @@
     .table td {
         border: none;
         position: relative;
-        padding-left: 50%;
         text-align: right;
+        padding-left: 30%;
     }
 
     .table td:before {
@@ -89,41 +89,90 @@
         white-space: nowrap;
         text-align: left;
         font-weight: bold;
+        content: attr(data-label);
     }
 
-    .table td:nth-of-type(1):before {
+    /* For the User */
+    .user-table tbody td:nth-of-type(1)::before {
         content: "User ID";
     }
 
-    .table td:nth-of-type(2):before {
-        content: "Court ID";
+    .user-table tbody td:nth-of-type(2)::before {
+        content: "User Name";
     }
 
-    .table td:nth-of-type(3):before {
+    .user-table tbody td:nth-of-type(3)::before {
+        content: "User Email";
+    }
+
+    .user-table tbody td:nth-of-type(4)::before {
+        content: "User Status";
+    }
+
+
+    /* For the booking table */
+    .booking-table tbody td:nth-of-type(1)::before {
+        content: "Booking ID";
+    }
+
+    .booking-table tbody td:nth-of-type(2)::before {
+        content: "Transaction ID";
+    }
+
+    .booking-table tbody td:nth-of-type(3)::before {
+        content: "User ID";
+    }
+
+    .booking-table tbody td:nth-of-type(4)::before {
         content: "Court Name";
     }
 
-    .table td:nth-of-type(4):before {
+    .booking-table tbody td:nth-of-type(5)::before {
+        content: "Date and Time";
+    }
+
+    .booking-table tbody td:nth-of-type(6)::before {
+        content: "Paid Amount";
+    }
+
+    .booking-table tbody td:nth-of-type(7)::before {
+        content: "Booking Status";
+    }
+
+    /* For the courts table */
+    .table tbody td:nth-of-type(1)::before {
+        content: "User ID";
+    }
+
+    .table tbody td:nth-of-type(2)::before {
+        content: "Court ID";
+    }
+
+    .table tbody td:nth-of-type(3)::before {
+        content: "Court Name";
+    }
+
+    .table tbody td:nth-of-type(4)::before {
         content: "Court Type";
     }
 
-    .table td:nth-of-type(5):before {
+    .table tbody td:nth-of-type(5)::before {
         content: "Court Amount";
     }
 
-    .table td:nth-of-type(6):before {
+    .table tbody td:nth-of-type(6)::before {
         content: "Court Location";
     }
 
-    .table td:nth-of-type(7):before {
+    .table tbody td:nth-of-type(7)::before {
         content: "Current Booking";
     }
 
-    .table td:nth-of-type(8):before {
+    .table tbody td:nth-of-type(8)::before {
         content: "Max Players";
     }
 
-    .table td:nth-of-type(9):before {
+    .table tbody td:nth-of-type(9)::before {
         content: "Court Management";
     }
 }
