@@ -29,6 +29,14 @@ const Home = () => {
 
     const [filteredCourts, setFilteredCourts] = useState([]); // This is used to store the list of courts that match the search and type filters
 
+    useEffect(() => {
+        Swal.fire({
+            title: 'IMPORTANT',
+            text: 'It may take a while to fetch court',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
