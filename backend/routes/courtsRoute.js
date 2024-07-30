@@ -55,6 +55,7 @@ router.delete("/deleteCourt/:id", async (req, res) => {
 
         await Court.findByIdAndDelete(req.params.id);
         res.send("Court deleted successfully");
+
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -63,10 +64,19 @@ router.delete("/deleteCourt/:id", async (req, res) => {
 
 
 
-// Admin - Delete the current Court
+// Admin - Update the current Court
 router.put('/updateCourt/:id', async (req, res) => {
     try {
-        const { courtId, name, location, maxPlayers, price, type, description, imgURLs } = req.body;
+        const {
+            courtId,
+            name,
+            location,
+            maxPlayers,
+            price,
+            type,
+            description,
+            imgURLs
+        } = req.body;
 
         // Validate the required fields
         if (!name || !location || !maxPlayers || !price || !type) {
@@ -90,15 +100,12 @@ router.put('/updateCourt/:id', async (req, res) => {
 
         await court.save();
         res.json({ message: "Court updated successfully", court });
+
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: error.message });
     }
 });
-
-
-
-
 
 
 
