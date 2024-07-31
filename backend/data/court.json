@@ -11,7 +11,7 @@
         "maxPlayers": 12,
         "currentBookings": [],
         "location": "Auckland CBD",
-        "description": "description area...."
+        "description": "Auckland Indoor Futsal 1 is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
     },
     {
         "name": "Auckland Indoor Futsal 2",
@@ -25,7 +25,7 @@
         "maxPlayers": 12,
         "currentBookings": [],
         "location": "Auckland CBD",
-        "description": "description area...."
+        "description": "Auckland Indoor Futsal 2 is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
     },
     {
         "name": "Auckland Indoor Futsal 3",
@@ -39,7 +39,7 @@
         "maxPlayers": 10,
         "currentBookings": [],
         "location": "Auckland CBD",
-        "description": "description area...."
+        "description": "Auckland Indoor Futsal 3 is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
     },
     {
         "name": "Auckland Outdoor Futsal 1",
@@ -53,7 +53,7 @@
         "maxPlayers": 10,
         "currentBookings": [],
         "location": "Parnell, Auckland",
-        "description": "description area...."
+        "description": "Auckland Outdoor Futsal 1 is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
     },
     {
         "name": "Auckland Outdoor Futsal 2",
@@ -67,7 +67,7 @@
         "maxPlayers": 10,
         "currentBookings": [],
         "location": "Parnell, Auckland",
-        "description": "description area...."
+        "description": "Auckland Outdoor Futsal 2 is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
     },
     {
         "name": "Auckland Outdoor Futsal 3",
@@ -81,6 +81,6 @@
         "maxPlayers": 12,
         "currentBookings": [],
         "location": "Parnell, Auckland",
-        "description": "description area...."
+        "description": "Auckland Outdoor Futsal 3 is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
     }
 ]

@@ -366,7 +366,11 @@ export function AddCourt() {
                 <input type="text" className="form-control add-court-form" placeholder="Location" value={location} onChange={(e) => { setLocation(e.target.value) }} />
                 <input type="number" className="form-control add-court-form" placeholder="Max Players" value={maxPlayers} onChange={(e) => { setMaxPlayers(e.target.value) }} />
                 <input type="number" className="form-control add-court-form" placeholder="Price" value={price} onChange={(e) => { setPrice(e.target.value) }} />
-                <input type="text" className="form-control add-court-form" placeholder="Type" value={type} onChange={(e) => { setType(e.target.value) }} />
+                <select className="form-control add-court-form" value={type} onChange={(e) => { setType(e.target.value) }}>
+                    <option value="">Court Type</option>
+                    <option value="Indoor">Indoor</option>
+                    <option value="Outdoor">Outdoor</option>
+                </select>
             </div>
 
             <div className="col-md-5">
@@ -493,7 +497,11 @@ export function UpdateCourt() {
             </div>
 
             <div className="col-md-5">
-                <input type="text" className="form-control update-court-form" placeholder="Type" value={type} onChange={(e) => { setType(e.target.value) }} />
+                <select className="form-control add-court-form" value={type} onChange={(e) => { setType(e.target.value) }}>
+                    <option value="">Court Type</option>
+                    <option value="Indoor">Indoor</option>
+                    <option value="Outdoor">Outdoor</option>
+                </select>
                 <input type="text" className="form-control update-court-form" placeholder="Description" value={description} onChange={(e) => { setDescription(e.target.value) }} />
                 <input type="text" className="form-control update-court-form" placeholder="Image URL 1" value={imgURL1} onChange={(e) => { setImgURL1(e.target.value) }} />
                 <input type="text" className="form-control update-court-form" placeholder="Image URL 2" value={imgURL2} onChange={(e) => { setImgURL2(e.target.value) }} />

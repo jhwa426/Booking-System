@@ -43,3 +43,7 @@ h1 {
 .loading-text {
     text-align: center;
 }
+
+.p-text {
+    text-align: justify;
+}

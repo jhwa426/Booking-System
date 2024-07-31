@@ -127,7 +127,7 @@ const Booking = () => {
                                 <p>Date : {displayDate}</p>
                                 <p>Play Time : {startTime} to {endTime}</p>
                                 <p>Max Players : {court.maxPlayers} people</p>
-                                <p>Description : {court.description}</p>
+                                <p className="p-text">{court.description}</p>
                             </b>
                         </div>
 

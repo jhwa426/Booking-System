@@ -63,7 +63,6 @@ const Courts = ({ court, startDate, endDate }) => {
                                     <img className="d-block w-100 detail-img" src={img} />
                                     <Carousel.Caption>
                                         <h3>{court.name}</h3>
-                                        <p>{court.description}</p>
                                     </Carousel.Caption>
                                 </Carousel.Item>
                             )
