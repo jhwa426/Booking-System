@@ -78,10 +78,11 @@ router.put('/updateCourt/:id', async (req, res) => {
             imgURLs
         } = req.body;
 
-        // Validate the required fields
-        if (!name || !location || !maxPlayers || !price || !type) {
+        // Validate all fields
+        if (!courtId || !name || !location || !maxPlayers || !price || !type || !description || !imgURLs) {
             return res.status(400).json({ message: "Missing required fields" });
         }
+
 
         const court = await Court.findById(req.params.id);
         if (!court) {
