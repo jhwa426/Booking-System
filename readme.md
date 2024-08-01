@@ -24,7 +24,7 @@
 <img align="left" alt="nodejs" height="50px" src="https://cdn.svgporn.com/logos/nodejs.svg" />
 <img align="left" alt="mongodb" height="50px" src="https://cdn.svgporn.com/logos/mongodb-icon.svg" />
 <img align="left" alt="Git" height="50px" src="https://cdn.svgporn.com/logos/git-icon.svg" />
-<img align="left" alt="render" height="50px" src="https://dka575ofm4ao0.cloudfront.net/pages-transactional_logos/retina/89884/render-status-4b015255-e0cc-422c-943d-4f60b5f03094.png" />
+<img align="left" alt="render" height="50px" src="https://media.licdn.com/dms/image/D4E0BAQGGDoFoqHtOvA/company-logo_200_200/0/1702595267620/renderco_logo?e=2147483647&v=beta&t=Ywm0UZpTXbiXPopyfCDty8QXSEVz88QWWCwy28qLUyE" />
 
 <br />
 <br />
