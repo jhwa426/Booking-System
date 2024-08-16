@@ -1,8 +1,12 @@
 ## Football Booking Management System
 
-<p> Developed a Full-Stack Football Booking Management System utilising React JS and the <b>MERN</b> stack (MongoDB, Express, React, and NodeJS), which facilitated the development of React applications with <b>backend connectivity via HTTP</b>, incorporated <b>user authentication</b>, integrated the <b>Payment Methods API (Stripe JS)</b>, and enabled <b>CRUD</b> operations for court management through a RESTful API.
+<p> 
+Developed a Full-Stack Football Booking Management System utilising React JS and the <b>MERN</b> stack (MongoDB, Express, React, and NodeJS), which facilitated the development of React applications with <b>backend connectivity via HTTP</b>, incorporated <b>user authentication</b>, integrated the <b>Payment Methods API (Stripe JS)</b>, and enabled <b>CRUD</b> operations for court management through a RESTful API.
+</p>
 
 ## [Booking.Football](https://booking-football.onrender.com/)
+
+### Features
 
 - Utilising React JS and the MERN (MongoDB, Express, React, and Node) stack
 
@@ -20,7 +24,7 @@
 
 - Deployment of the website by Render.com for both Frontend and Backend [Booking.Football](https://booking-football.onrender.com/)
 
-</p>
+<br />
 
 ## Technical Skills 💻
 
