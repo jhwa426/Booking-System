@@ -26,20 +26,11 @@ Developed a Full-Stack Football Booking Management System utilising React JS and
 
 <br />
 
-
 ![Booking.Football](https://github.com/user-attachments/assets/06340803-ca83-43a3-92b6-db01655567d9)
-
 
 ## Technical Skills 💻
 
-<img align="left" alt="React/React Native" height="50px" src="https://cdn.svgporn.com/logos/react.svg" />
-<img align="left" alt="Javascript" height="50px" src="https://cdn.svgporn.com/logos/javascript.svg" />
-<img align="left" alt="html5" height="50px" src="https://cdn.svgporn.com/logos/html-5.svg" />
-<img align="left" alt="css3" height="50px" src="https://cdn.svgporn.com/logos/css-3.svg" />
-<img align="left" alt="nodejs" height="50px" src="https://cdn.svgporn.com/logos/nodejs.svg" />
-<img align="left" alt="mongodb" height="50px" src="https://cdn.svgporn.com/logos/mongodb-icon.svg" />
-<img align="left" alt="Git" height="50px" src="https://cdn.svgporn.com/logos/git-icon.svg" />
-<img align="left" alt="render" height="50px" src="https://media.licdn.com/dms/image/D4E0BAQGGDoFoqHtOvA/company-logo_200_200/0/1702595267620/renderco_logo?e=2147483647&v=beta&t=Ywm0UZpTXbiXPopyfCDty8QXSEVz88QWWCwy28qLUyE" />
+<img align="left" alt="React/React Native" height="50px" src="https://cdn.svgporn.com/logos/react.svg" /><img align="left" alt="Javascript" height="50px" src="https://cdn.svgporn.com/logos/javascript.svg" /><img align="left" alt="html5" height="50px" src="https://cdn.svgporn.com/logos/html-5.svg" /><img align="left" alt="css3" height="50px" src="https://cdn.svgporn.com/logos/css-3.svg" /><img align="left" alt="nodejs" height="50px" src="https://cdn.svgporn.com/logos/nodejs.svg" /><img align="left" alt="mongodb" height="50px" src="https://cdn.svgporn.com/logos/mongodb-icon.svg" /><img align="left" alt="Git" height="50px" src="https://cdn.svgporn.com/logos/git-icon.svg" /><img align="left" alt="render" height="50px" src="https://media.licdn.com/dms/image/D4E0BAQGGDoFoqHtOvA/company-logo_200_200/0/1702595267620/renderco_logo?e=2147483647&v=beta&t=Ywm0UZpTXbiXPopyfCDty8QXSEVz88QWWCwy28qLUyE" />
 
 <br />
 <br />
