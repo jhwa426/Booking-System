@@ -1,6 +1,6 @@
 [
     {
-        "name": "Auckland Indoor Futsal 1",
+        "name": "Auckland Indoor Futsal - Red Court",
         "imgURLs": [
             "https://i.pinimg.com/736x/bf/61/bd/bf61bd125649fbdb1d0aeaaac6b23c93.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlkl9nNaztVA8yGAbHsZJp_h1Yw8OysKGpA&usqp=CAU",
@@ -11,10 +11,10 @@
         "maxPlayers": 12,
         "currentBookings": [],
         "location": "Auckland CBD",
-        "description": "Auckland Indoor Futsal 1 is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
+        "description": "Auckland Indoor Futsal - Red Court is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
     },
     {
-        "name": "Auckland Indoor Futsal 2",
+        "name": "Auckland Indoor Futsal - Blue Court",
         "imgURLs": [
             "https://d26itsb5vlqdeq.cloudfront.net//image/BBC54D1A-C4F2-F6B5-DED90650B840D414",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlkl9nNaztVA8yGAbHsZJp_h1Yw8OysKGpA&usqp=CAU",
@@ -25,10 +25,10 @@
         "maxPlayers": 12,
         "currentBookings": [],
         "location": "Auckland CBD",
-        "description": "Auckland Indoor Futsal 2 is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
+        "description": "Auckland Indoor Futsal - Blue Court is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
     },
     {
-        "name": "Auckland Indoor Futsal 3",
+        "name": "Auckland Indoor Futsal - Green Court",
         "imgURLs": [
             "https://www.mecreeled.com/wp-content/uploads/2019/03/futsal-field-led-lighting.jpg",
             "https://futsalcentral.com.au/wp-content/uploads/2022/08/165667b7-4037-4bed-af52-e2d21cb67ec0-2.jpg?w=1024",
@@ -39,10 +39,10 @@
         "maxPlayers": 10,
         "currentBookings": [],
         "location": "Auckland CBD",
-        "description": "Auckland Indoor Futsal 3 is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
+        "description": "Auckland Indoor Futsal - Green Court is a top-notch indoor futsal court located in the heart of Auckland CBD. The court is designed to provide an optimal playing experience for futsal enthusiasts. It features state-of-the-art lighting and a well-maintained playing surface, ensuring a high-quality game environment."
     },
     {
-        "name": "Auckland Outdoor Futsal 1",
+        "name": "Auckland Outdoor Futsal - Red Court",
         "imgURLs": [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnlkl9nNaztVA8yGAbHsZJp_h1Yw8OysKGpA&usqp=CAU",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPfxVG59gxSL8hV1d96zu3zKHD600scrNWAP1k_8TGmEthQzfQ8R-9OauTajsfS_eEgsk&usqp=CAU",
@@ -53,10 +53,10 @@
         "maxPlayers": 10,
         "currentBookings": [],
         "location": "Parnell, Auckland",
-        "description": "Auckland Outdoor Futsal 1 is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
+        "description": "Auckland Outdoor Futsal - Red Court is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
     },
     {
-        "name": "Auckland Outdoor Futsal 2",
+        "name": "Auckland Outdoor Futsal - Blue Court",
         "imgURLs": [
             "https://i.pinimg.com/236x/8a/3e/15/8a3e1546f9181b515b9e98de5730355f.jpg",
             "https://www.allsportamerica.com/wp-content/uploads/futsal.jpg",
@@ -67,10 +67,10 @@
         "maxPlayers": 10,
         "currentBookings": [],
         "location": "Parnell, Auckland",
-        "description": "Auckland Outdoor Futsal 2 is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
+        "description": "Auckland Outdoor Futsal - Blue Court is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
     },
     {
-        "name": "Auckland Outdoor Futsal 3",
+        "name": "Auckland Outdoor Futsal - Green Court",
         "imgURLs": [
             "https://i.pinimg.com/originals/28/2c/80/282c80e8f348035ade0fd64222b72298.jpg",
             "https://www.gym-flooring.com/cdn/shop/files/DSCN1061.jpg?v=1693206231&width=1214",
@@ -81,6 +81,6 @@
         "maxPlayers": 12,
         "currentBookings": [],
         "location": "Parnell, Auckland",
-        "description": "Auckland Outdoor Futsal 3 is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
+        "description": "Auckland Outdoor Futsal - Green Court is a premier outdoor futsal court located in the scenic area of Parnell, Auckland. This court offers a unique outdoor playing experience, allowing players to enjoy the game of futsal in the fresh air and natural light."
     }
 ]
