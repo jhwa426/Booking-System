@@ -44,9 +44,9 @@ Developed a Full-Stack Football Booking Management System utilising React JS and
 <br />
 <br />
 
-# Getting Started
+## Getting Started
 
-## Installation
+### Installation
 
 <details>
 To run this Football Booking Management System locally, follow these steps:
